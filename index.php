@@ -1,2 +1,2 @@
 <?php
-echo 11;
+// Jugoo Config
