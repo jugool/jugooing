@@ -17,3 +17,9 @@ CREATE TABLE `user` (
   KEY `index_job_number` (`job_number`),
   KEY `index_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-------------------------------
+ALTER TABLE `user`
+ADD COLUMN `create_time`  int(32) NULL COMMENT '创建时间' AFTER `type`,
+ADD COLUMN `login_ip`  varchar(16) NULL COMMENT '登陆IP地址' AFTER `create_time`,
+ADD COLUMN `login_num`  int(11) NULL COMMENT '登陆次数' AFTER `login_ip`;
