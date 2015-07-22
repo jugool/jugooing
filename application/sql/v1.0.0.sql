@@ -10,9 +10,10 @@ CREATE TABLE `user` (
   `password` varchar(128) COLLATE utf8_unicode_ci NOT NULL COMMENT '密码',
   `email` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '邮箱',
   `telephone` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '手机',
+  `qq` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'QQ',
   `image` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '头像地址',
   `type` tinyint(2) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户类型',
   PRIMARY KEY (`id`),
-  KEY `index_job_number` (`name`),
+  KEY `index_job_number` (`job_number`),
   KEY `index_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
