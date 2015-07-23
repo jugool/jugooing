@@ -23,7 +23,7 @@
     <div id="ad_setting" class="ad_setting">
         <a class="ad_setting_a" href="javascript:;">
             <i class="icon-user glyph-icon" style="font-size: 20px"></i>
-            <span>管理员</span>
+            <span style='color:red;'><?php echo $user_name;?></span>
             <i class="icon-chevron-down glyph-icon"></i>
         </a>
         <ul class="dropdown-menu-uu" style="display: none" id="ad_setting_ul">

@@ -64,7 +64,8 @@ class Admin extends CI_Controller {
                         $login_info['logins'] = 18;
                         $this->session->set_userdata('admin_info', $login_info);
                         //成功后跳转
-                        $this->load->view('admin/index');
+                        $data['user_name'] = $login_info['user_name'];
+                        $this->load->view('admin/index', $data);
                     }else{
                         echo "<script>window.alert('该用户不存在或密码错误！');</script>";
                         $this->load->view('admin/login');
