@@ -69,6 +69,6 @@ $db['default']['stricton'] = FALSE;*/
 /* Location: ./application/config/database.php */
 
 /*
- * ×Ô¶¨ÒåÊý¾Ý¿âÐÅÏ¢
+ * ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Ï¢
  * */
-include __ROOT__.'/config/config.inc.php';
+include __ROOT__.'/config/config.php';

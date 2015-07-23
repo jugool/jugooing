@@ -23,11 +23,11 @@ if (!defined('BASEPATH')) {
 <div id="layout_right_content" class="layout_right_content">
 	<div class="route_bg">
 		<a href="#">主页</a><i class="glyph-icon icon-chevron-right"></i>
-		<a href="#">用户添加</a>
+		<a href="#">用户列表</a>
 	</div>
     <div class="mian_content">
         <div id="page_content">
-            <iframe id="menuFrame" name="menuFrame" src="admin/main" style="overflow:visible;" scrolling="yes"
+            <iframe id="menuFrame" name="menuFrame" src="main" style="overflow:visible;" scrolling="yes"
                     frameborder="no" height="100%" width="100%" target="_self"></iframe>
         </div>
     </div>

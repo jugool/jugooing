@@ -21,9 +21,17 @@ class Admin extends CI_Controller {
 	public function index()
 	{
 		// 加载后台登录页面
-        $this->load->view('login/index_v2');
+        $this->load->view('admin/login');
 	}
 	
+	/**
+	 * 后台首页
+	 */
+	public function main()
+	{
+		// 加载后台中心页面
+		$this->load->view('admin/user/user_list');
+	}
 
     /**
      * 后台登录验证
@@ -35,7 +43,7 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('user_name', '用户名', 'trim|required|min_length[4]|max_length[12]');
         $this->form_validation->set_rules('password', '密码', 'trim|required');
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('login/index_v2');
+            $this->load->view('admin/login');
         }
         else
         {
@@ -59,7 +67,7 @@ class Admin extends CI_Controller {
                         $this->load->view('admin/index');
                     }else{
                         echo "<script>window.alert('该用户不存在或密码错误！');</script>";
-                        $this->load->view('login/index_v2');
+                        $this->load->view('admin/login');
                     }
                 }
             }
@@ -72,6 +80,6 @@ class Admin extends CI_Controller {
     public function login_out()
     {
         $this->session->sess_destroy();//注销所有session变量
-        redirect('admin','refresh');
+        $this->load->view('admin/login');
     }
 }
