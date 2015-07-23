@@ -6,11 +6,11 @@
  */
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/*----------------------------¸ÃÏîÄ¿ËùÓÃµ½µÄ------------------------*/
+/*----------------------------ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½------------------------*/
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'ljq...';
-$db['default']['database'] = 'test';
+$db['default']['password'] = 'root';
+$db['default']['database'] = 'jugool';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -20,7 +20,7 @@ $db['default']['cachedir'] = '';
 $db['default']['char_set'] = 'utf8';
 $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
-$db['default']['autoinit'] = TRUE; //±¨´í³öÏÖ mysqli_real_escape_string()
+$db['default']['autoinit'] = TRUE; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ mysqli_real_escape_string()
 $db['default']['stricton'] = FALSE;
-$db['real_data']['table_pre'] = '';  //Êý¾Ý±íµÄÇ°×º
-/*----------------------------¸ÃÏîÄ¿ËùÓÃµ½µÄ------------------------*/
+$db['real_data']['table_pre'] = '';  //ï¿½ï¿½ï¿½Ý±ï¿½ï¿½Ç°×º
+/*----------------------------ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½------------------------*/
