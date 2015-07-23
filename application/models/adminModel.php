@@ -25,6 +25,7 @@ class adminModel extends CI_Model
         $this->db->select('*');
         $this->db->where('name',$user);
         $this->db->where('password',md5(md5($password)));
+        $this->db->where('type',0);
         $query = $this->db->get('user');
         if($query->num_rows > 0){
             return $query->row();

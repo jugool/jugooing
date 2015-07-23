@@ -20,46 +20,10 @@ class Admin extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['notice'] = '';
-        //是否登陆
-        $is_login = $this->session->userdata('admin_info');
-        if (is_array($is_login) && !empty($is_login))
-        {
-            $this->load->view('admin/index');
-        }
-        else
-        {
-            // 加载后台登录页面
-            $this->load->view('login/index_v2', $data);
-        }
+		// 加载后台登录页面
+        $this->load->view('login/index_v2');
 	}
 	
-	/**
-	 * 后台登录
-	 */
-	public function login()
-	{
-		
-		// 用户名为空
-		if (empty($_POST['name']))
-		{
-			$data['notice'] = '用户名为空';
-			$this->load->view('login/index', $data);
-		}
-		// 密码为空
-		if (empty($_POST['password']))
-		{
-			$data['notice'] = '密码为空';
-			$this->load->view('login/index', $data);
-		}
-		// 选出用户
-		
-	}
-
-	public function main()
-	{
-		$this->load->view('admin/main');
-	}
 
     /**
      * 后台登录验证
@@ -92,7 +56,7 @@ class Admin extends CI_Controller {
                         $login_info['logins'] = 18;
                         $this->session->set_userdata('admin_info', $login_info);
                         //成功后跳转
-                        redirect('admin');
+                        $this->load->view('admin/index');
                     }else{
                         echo "<script>window.alert('该用户不存在或密码错误！');</script>";
                         $this->load->view('login/index_v2');
