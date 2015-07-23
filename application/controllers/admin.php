@@ -56,6 +56,11 @@ class Admin extends CI_Controller {
 		
 	}
 
+	public function main()
+	{
+		$this->load->view('admin/main');
+	}
+
     /**
      * 后台登录验证
      */

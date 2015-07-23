@@ -199,6 +199,9 @@ if (defined('ENVIRONMENT'))
  * And away we go...
  *
  */
+date_default_timezone_set('Asia/Shanghai');
+define("__ROOT__", str_replace("\\", "/", FCPATH));	//定义项目的根路径
+
 require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */
