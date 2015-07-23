@@ -1,6 +1,10 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery.js"></script>
 <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/add.css" type="text/css" media="screen">
 <link rel="stylesheet" href="<?php echo base_url(); ?>/public/css/bootstrap.css" type="text/css" media="screen">
+<div class="route_bg">
+	<a href="#">主页</a><i class="glyph-icon icon-chevron-right"></i>
+	<a href="#">用户列表</a>
+</div>
 <div class="div_from_aoto" style="width: 500px;">
     <form>
         <div class="control-group">

@@ -4,9 +4,9 @@
             <a href="javascript:;" target="menuFrame"><i class="glyph-icon icon-home"></i>菜单</a>
         </li>
         <li class="childUlLi">
-            <a href="#" target="menuFrame"> <i class="glyph-icon icon-reorder"></i>用户管理</a>
+            <a href="user/user_list" target="menuFrame"> <i class="glyph-icon icon-reorder"></i>用户管理</a>
             <ul style="display: none;">
-                <li><a href="admin/user_list" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>用户列表</a></li>
+                <li><a href="../b_user/user_list" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>用户列表</a></li>
                 <li><a href="#"><i class="glyph-icon icon-chevron-right"></i>添加用户</a></li>
             </ul>
         </li>
