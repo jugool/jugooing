@@ -42,6 +42,11 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/user/user_list');
 	}
 
+    public function add_user()
+    {
+        $this->load->view('admin/user/add_user');
+    }
+
     /**
      * 后台登录验证
      */
