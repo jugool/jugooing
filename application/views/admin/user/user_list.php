@@ -2,14 +2,16 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/bootstrap.css" type="text/css" media="screen">
 <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/admin.css" type="text/css" media="screen">
 <ol class="breadcrumb">
-    <li><a href="#">用户管理</a></li>
+    <li><a>用户管理</a></li>
     <li class="active">用户列表</li>
 </ol>
-
-<div class="table_list">
-    <form class="navbar-form navbar-right" role="search">
+<div class="table_lis top">
+	<form class="navbar-form navbar-left">
+        <a href="../b_user/uadd" type="button" class="btn btn-info btn_add" style='margin-left:15px;'>添加用户</a>
+    </form>
+    <form class="navbar-form navbar-right" role="search" action="ulist" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="请输入名称查找" name="like">
         </div>
         <button type="submit" class="btn btn-default">查询</button>
     </form>
@@ -21,99 +23,54 @@
         <th>名称</th>
         <th>工号</th>
         <th>手机</th>
-        <th>邮箱</th>
+        <th>QQ</th>
         <th>用户类型</th>
-        <th>创建时间</th>
         <th>操作</th>
     </tr>
+<?php  foreach ($user_list as $k => $val){ ?>
     <tr>
-        <td>1</td>
-        <td>佳佳</td>
-        <td>257</td>
-        <td>1523655484</td>
-        <td>jijia@@qq.com</td>
-        <td>普通用户</td>
-        <td>2014/10/23</td>
+        <td><?php echo $val->id; ?></td>
+        <td><?php echo $val->name; ?></td>
+        <td><?php echo $val->job_number; ?></td>
+        <td><?php echo $val->telephone; ?></td>
+        <td><?php echo $val->qq; ?></td>
+        <td><?php echo $val->type; ?></td>
         <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
+            <a href="uupdate?id=<?php echo $val->id;?>">修改</a> |
+            <a href="udelete?id=<?php echo $val->id;?>" onclick= "if(confirm( '确定删除？ ')==false)return   false; ">删除</a>
         </td>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>佳佳</td>
-        <td>257</td>
-        <td>1523655484</td>
-        <td>jijia@@qq.com</td>
-        <td>普通用户</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>佳佳</td>
-        <td>257</td>
-        <td>1523655484</td>
-        <td>jijia@@qq.com</td>
-        <td>普通用户</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>佳佳</td>
-        <td>257</td>
-        <td>1523655484</td>
-        <td>jijia@@qq.com</td>
-        <td>普通用户</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>佳佳</td>
-        <td>257</td>
-        <td>1523655484</td>
-        <td>jijia@@qq.com</td>
-        <td>普通用户</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>佳佳</td>
-        <td>257</td>
-        <td>1523655484</td>
-        <td>jijia@@qq.com</td>
-        <td>普通用户</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
+<?php }?>
 </table>
 <nav>
     <ul class="pagination">
-        <li><a href="javascript:;">总页数：27</a></li>
-        <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
-        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+        <li><a>页数：<?php echo $page;?>/<?php echo $total_page;?></a></li>
+        <li><a aria-label="Next" href="ulist?page=<?php echo --$page;?>"><span aria-hidden="true">«</span></a></li>
+        <?php 
+        	++$page;
+        	$page1 = $page;
+        	if ($total_page >= 5)
+        	{
+        		$j = 5;
+        	}
+        	else 
+        	{
+        		$j = $total_page;
+        	}
+        	for ($i = 1; $i<=$j; $i++)
+        	{
+        		if ($page1 <= $total_page){
+        		if ($page1 == $page)
+        		{
+        ?>
+        	<li class="active"><a href="ulist?page=<?php echo $page1;?>"><?php echo $page1; ?><span class="sr-only">(current)</span></a></li>
+        <?php }else{ ?>
+        	<li><a href="ulist?page=<?php echo $page1?>"><?php echo $page1;?></a></li>
+        <?php }?>
+        <?php 
+        	++$page1;
+        	}}
+        ?>
+        <li><a aria-label="Next" href="ulist?page=<?php echo (++$page);?>"><span aria-hidden="true">»</span></a></li>
     </ul>
 </nav>

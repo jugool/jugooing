@@ -6,11 +6,9 @@
         <li class="childUlLi">
             <a href="javascript:;" target="menuFrame"> <i class="glyph-icon icon-reorder"></i>用户管理</a>
             <ul style="display: none;">
-
-			<li><a href="../index.php/b_user/ulist" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>用户列表</a></li>
-                <li><a href="../index.php/b_user/uadd"><i class="glyph-icon icon-chevron-right"></i>添加用户</a></li>
-
-            </ul>
+				<li><a href="../index.php/b_user/ulist" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>用户列表</a></li>
+                <li><a href="../index.php/b_user/uadd" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>添加用户</a></li>
+			</ul>
         </li>
         <li class="childUlLi">
             <a href="javascript:;" target="menuFrame"> <i class="glyph-icon icon-reorder"></i>菜品管理</a>
