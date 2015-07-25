@@ -6,6 +6,9 @@
     <li class="active">用户列表</li>
 </ol>
 <div class="table_lis top">
+	<form class="navbar-form navbar-left">
+        <a href="../b_user/uadd" type="button" class="btn btn-info btn_add" style='margin-left:15px;'>添加用户</a>
+    </form>
     <form class="navbar-form navbar-right" role="search" action="ulist" method="post">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="请输入名称查找" name="like">
