@@ -24,7 +24,7 @@ if (!defined('BASEPATH')) {
 
     <div class="mian_content">
         <div id="page_content">
-            <iframe id="menuFrame" name="menuFrame" src="main" style="overflow:visible;" scrolling="yes"
+            <iframe id="menuFrame" name="menuFrame" src="../index.php/b_user/ulist" style="overflow:visible;" scrolling="yes"
                     frameborder="no" height="100%" width="100%" target="_self"></iframe>
         </div>
     </div>
