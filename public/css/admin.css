@@ -6,6 +6,15 @@
     border:1px solid red;
 }
 
+.table th, .table td {
+    text-align: center;
+}
+
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    vertical-align: middle;
+}
 .pagination{
     margin: 10px 2.5%;
     float: right;
@@ -13,6 +22,10 @@
 
 .table_list{
 	margin-right: 2.5%;
+}
+
+.table_list .btn_add{
+    margin-left:15px;
 }
 
 .route_bg{
