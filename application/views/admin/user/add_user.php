@@ -15,9 +15,9 @@
         <!-- form: -->
         <section>
             <div class="col-lg-8 col-lg-offset-2">
-                <div class="page-header">
+                <!-- <div class="page-header">
                     <h3>新用户添加</h3>
-                </div>
+                </div> -->
                 <form id="defaultForm" method="post" class="form-horizontal" action="target.php">
 
                     <div class="form-group">
