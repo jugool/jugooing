@@ -5,8 +5,7 @@
     <li><a>用户管理</a></li>
     <li class="active">用户列表</li>
 </ol>
-
-<div class="table_list">
+<div class="table_lis top">
     <form class="navbar-form navbar-right" role="search" action="ulist" method="post">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="请输入名称查找" name="like">
@@ -34,7 +33,7 @@
         <td><?php echo $val->qq; ?></td>
         <td><?php echo $val->type; ?></td>
         <td>
-            <a href="update?id=<?php echo $val->id;?>">修改</a> |
+            <a href="uupdate?id=<?php echo $val->id;?>">修改</a> |
             <a href="udelete?id=<?php echo $val->id;?>" onclick= "if(confirm( '确定删除？ ')==false)return   false; ">删除</a>
         </td>
     </tr>

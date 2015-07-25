@@ -91,26 +91,77 @@ class B_user extends CI_Controller {
 	 */
 	public function uadd()
 	{
-		$this->load->view('admin/user/add_user');
-		/* name
-		job_number
-		depart_number 
-		password 
-		email 
-		telephone
-		qq
-		image 
-		type 
-		create_time 
-		login_ip 
-		login_num */
-		
-		/* $data = array(
-				'url' => 'www.mynewclient.com',
-				'name' => 'BigCo Inc',
-				'clientid' => '33',
-				'type' => 'dynamic'
-		); */
-		//$this->db->insert('sites', $data); 把数据增加到sites表中.
+		if (empty($_POST))
+		{
+			$this->load->view('admin/user/add_user');
+		}
+		else 
+		{
+			$data['name'] = $_POST['username'];
+			$data['type'] = $_POST['user_type'];
+			$data['job_number'] = $_POST['job_number'];
+			$data['password']= md5(md5($_POST['password']));
+			if (!empty($_POST['telphone']))
+			{
+				$data['telephone'] = $_POST['telphone'];
+			}
+			if (!empty($_POST['qq']))
+			{
+				$data['qq'] = $_POST['qq'];
+			}
+			if (!empty($_POST['email']))
+			{
+				$data['email'] = $_POST['email'];
+			}
+			
+			if ($this->db->insert('user', $data))
+			{
+				echo "<script>alert('添加成功!')</script>";
+				$this->load->view('admin/user/add_user');
+			}
+		}
 	}
+	
+	/**
+	 * 用户修改页面
+	 */
+	public function uupdate()
+	{
+		if (!empty($_GET['id']))
+		{
+			$this->db->select('*');
+			$this->db->where('id', $_GET['id']);
+			$query = $this->db->get('user');
+			$data['user'] = $query->result();
+			$data['user'] = $data['user'][0];
+			
+			$this->load->view('admin/user/update_user', $data);
+		}
+		else{
+			$data['name'] = $_POST['username'];
+			$data['type'] = $_POST['user_type'];
+			$data['job_number'] = $_POST['job_number'];
+			$data['password']= md5(md5($_POST['password']));
+			if (!empty($_POST['telphone']))
+			{
+				$data['telephone'] = $_POST['telphone'];
+			}
+			if (!empty($_POST['qq']))
+			{
+				$data['qq'] = $_POST['qq'];
+			}
+			if (!empty($_POST['email']))
+			{
+				$data['email'] = $_POST['email'];
+			}
+			
+			$this->db->where('id', $_POST['id']);
+			if ($this->db->update('user', $data))
+			{
+				echo "<script>alert('修改成功!')</script>";
+				redirect('b_user/ulist');
+			}
+		}
+	}
+	
 }
