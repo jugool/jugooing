@@ -19,73 +19,39 @@
                 <div class="page-header">
                     <h3>菜品添加</h3>
                 </div>
-                <form id="defaultForm" method="post" class="form-horizontal" action="target.php">
+                <form id="defaultForm" method="post" class="form-horizontal" action="target.php" enctype="multipart/form-data">
 
                     <div class="form-group">
-                        <label for="username" class="col-xs-2 control-label">用户名</label>
-
+                        <label for="name" class="col-xs-2 control-label">菜品名称</label>
                         <div class="col-xs-2">
-                            <input type="text" id="username" class="form-control" name="username"/>
+                            <input type="text" id="name" class="form-control" name="name"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-xs-2 control-label">密码</label>
-
-                        <div class="col-xs-3">
-                            <input type="password" class="form-control" name="password"/>
+                        <label class="col-xs-2 control-label">菜品图片</label>
+                        <div class="col-xs-4">
+                            <input id="upfile" type="file" style="display:none">
+                            <div class="input-group">
+                                <input type="text" id="photoCover" name="upfile" class="form-control" placeholder="选择图片">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" onclick="$('input[id=upfile]').click();">选择图片</button>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-xs-2 control-label">重复密码</label>
-
-                        <div class="col-xs-3">
-                            <input type="password" class="form-control" name="confirmPassword"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-xs-2 control-label">用户类型</label>
-
-                        <div class="col-xs-3">
-                            <select class="form-control" name="user_type">
-                                <option value="">-------- 请选择 --------</option>
-                                <option value="1">管理员</option>
-                                <option value="2">普通用户</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-xs-2 control-label">联系电话</label>
-
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" name="telephone"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-xs-2 control-label">邮箱</label>
-
-                        <div class="col-xs-3">
-                            <input type="email" class="form-control" name="email"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-xs-2 control-label">QQ</label>
-
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" name="qq"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-xs-2 control-label" id="captchaOperation"></label>
-
+                        <label class="col-xs-2 control-label">价格</label>
                         <div class="col-xs-2">
-                            <input type="text" class="form-control" name="captcha"/>
+                            <input type="text" class="form-control" name="price"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">菜品介绍</label>
+                        <div class="col-xs-3">
+                            <textarea class="form-control" rows="3" name="descript"></textarea>
                         </div>
                     </div>
 
@@ -107,12 +73,9 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        // 生成一个简单的验证码
-        function randomNumber(min, max) {
-            return Math.floor(Math.random() * (max - min + 1) + min);
-        };
-        $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
-
+        $('input[id=upfile]').change(function() {
+            $('#photoCover').val($(this).val());
+        });
         $('#defaultForm').bootstrapValidator({
 
             message: '此值无效',
@@ -122,96 +85,28 @@
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                username: {
+                name: {
                     message: '用户名无效',
                     validators: {
                         notEmpty: {
-                            message: '用户名是必填项，且不能为空'
-                        },
-                        stringLength: {
-                            min: 4,
-                            max: 16,
-                            message: '用户名的字符长度必须大于4，小于16'
+                            message: '菜品名称是必填项，且不能为空'
                         }
-//                        regexp: {
-//                            regexp: /^[a-zA-Z0-9_\.]+$/,
-//                            message: '用户名只能由字母、数字、点和下划线组成'
-//                        },
-//                        remote: { //同步查看是否存在用户
-//                            url: 'is_users.php',
-//						      type: post,
-//							  data: function (validator) {
-//                                return {
-//                                     email: validator.getFieldElements('user_name').val()
-//                                };
-//                            },
-//                            message: '当前用户名不可用'
-//                        },
                     }
                 },
-                password: {
+                upfile: {
                     validators: {
                         notEmpty: {
-                            message: '密码是必填项，且不能为空'
-                        },
-                        identical: {
-                            field: 'confirmPassword',
-                            message: '密码和重复密码不一致'
+                            message: '您未选择上传的菜品图片'
                         }
                     }
                 },
-                confirmPassword: {
+                price: {
                     validators: {
                         notEmpty: {
-                            message: '重复密码是必填项，且不能为空'
+                            message: '您未填写菜品价格'
                         },
-                        identical: {
-                            field: 'password',
-                            message: '密码和重复密码不一致'
-                        }
-                    }
-                },
-                user_type: {
-                    validators: {
-                        notEmpty: {
-                            message: '用户类型未选择'
-                        }
-                    }
-                },
-                telephone: {
-                    validators: {
-                        digits: {
-                            message: '电话号码必须为数字'
-                        }
-                    }
-                },
-                email: {
-                    validators: {
-                        emailAddress: {
-                            message: '您输入的不是有效电子邮箱地址'
-                        }
-                    }
-                },
-                qq: {
-                    validators: {
-                        stringLength: {
-                            min: 5,
-                            max: 11,
-                            message: 'QQ号码的字符长度必须大于5，小于11'
-                        },
-                        digits: {
-                            message: 'QQ号码必须为数字'
-                        }
-                    }
-                },
-                captcha: {
-                    validators: {
-                        callback: {
-                            message: '回答错误',
-                            callback: function (value, validator) {
-                                var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
-                                return value == sum;
-                            }
+                        numeric: {
+                            message: '价格必须为数字'
                         }
                     }
                 }
