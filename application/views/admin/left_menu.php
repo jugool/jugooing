@@ -6,7 +6,7 @@
         <li class="childUlLi">
             <a href="user/user_list" target="menuFrame"> <i class="glyph-icon icon-reorder"></i>用户管理</a>
             <ul style="display: none;">
-                <li><a href="../b_user/user_list" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>用户列表</a></li>
+                <li><a href="../b_user/ulist" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>用户列表</a></li>
                 <li><a href="#"><i class="glyph-icon icon-chevron-right"></i>添加用户</a></li>
             </ul>
         </li>
