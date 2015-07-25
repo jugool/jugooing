@@ -92,9 +92,8 @@
                     <div class="form-group">
                         <div class="col-xs-2"></div>
                         <div class="col-xs-6 col-lg-offset-3">
-                            <button type="submit" class="btn btn-primary" name="signup" value="signup">添加</button>
+                            <button type="submit" class="btn btn-primary" name="signup" value="signup">修改</button>
                             </button>
-                            <button type="button" class="btn btn-info" id="resetBtn">重置表单</button>
                         </div>
                     </div>
                 </form>
