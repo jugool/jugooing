@@ -44,4 +44,5 @@ CREATE TABLE `dishes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='菜单表';
 
-
+ALTER TABLE `dishes`
+ADD COLUMN `date`  date NULL COMMENT '菜品上架时间' AFTER `time_slot`;

@@ -15,7 +15,7 @@
         <li class="childUlLi">
             <a href="javascript:;" target="menuFrame"> <i class="glyph-icon icon-reorder"></i>菜品管理</a>
             <ul style="display: none;">
-                <li><a href="admin/user_list" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>菜品列表</a></li>
+                <li><a href="b_dish/dish_list" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>菜品列表</a></li>
                 <li><a href="javascript:;"><i class="glyph-icon icon-chevron-right"></i>添加菜品</a></li>
                 <li><a href="b_library/library_list" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>菜品库</a></li>
             </ul>

@@ -19,6 +19,6 @@ class b_library extends CI_Controller
 
 
 
-        $this->load->view('admin/library/add_dishs');
+        $this->load->view('admin/library/add_library');
     }
 }
