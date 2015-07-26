@@ -38,11 +38,11 @@ CREATE TABLE `dish_library` (
 CREATE TABLE `dishes` (
   `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '菜单表主键ID',
   `l_id` int(8) DEFAULT NULL COMMENT '菜品库ID',
-  `time_slot` char(6) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '订餐时间段',
+  `dish_day` date DEFAULT NULL COMMENT '菜品上架时间',
+  `dish_time` char(6) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '订餐时间段',
+  `dish_num` tinyint(4) DEFAULT NULL COMMENT '菜品数量',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
-  `modify_time` int(11) DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='菜单表';
 
-ALTER TABLE `dishes`
-ADD COLUMN `date`  date NULL COMMENT '菜品上架时间' AFTER `time_slot`;
+

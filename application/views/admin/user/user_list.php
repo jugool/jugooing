@@ -25,7 +25,7 @@
         <th>手机</th>
         <th>QQ</th>
         <th>用户类型</th>
-        <th>操作</th>
+        <th>操作 </th>
     </tr>
 <?php  foreach ($user_list as $k => $val){ ?>
     <tr>
