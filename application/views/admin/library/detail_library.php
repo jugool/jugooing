@@ -39,7 +39,7 @@
                     </div>
 					
                     <div class="form-group" style="height:30px;">
-                        <label class="col-xs-2 control-label">价格</label>
+                        <label class="col-xs-2 control-label">价格(元)</label>
                         <div class="col-xs-2">
                             <input type="text" class="form-control" name="price" value="<?php echo $library->price;?>" readOnly="true"/>
                         </div>
