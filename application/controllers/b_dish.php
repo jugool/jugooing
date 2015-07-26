@@ -6,10 +6,8 @@
  */
 class b_dish extends CI_Controller
 {
-    public function dish_list()
+    public function dlist()
     {
-
-
-        $this->load->view('admin/dish/dish_list');
+		$this->load->view('admin/dish/dish_list');
     }
 }
