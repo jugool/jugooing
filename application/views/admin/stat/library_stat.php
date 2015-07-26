@@ -17,10 +17,10 @@
 </div>
 <div>
 <div style="width:60%;margin:auto;margin-top:20px;">
-<button type="button" class="btn btn-danger" style="background:#428bca;color:#428bca;height:20px;font-size:4px;border:0px;">员</button>总数：<?php echo $total;?>个<br/><br/>
-<button type="button" class="btn btn-danger" style="background:#428bca;color:#428bca;height:20px;font-size:4px;border:0px;">员</button>平均价格：<?php echo $price;?>元<br/><br/>
-<button type="button" class="btn btn-danger" style="background:#428bca;color:#428bca;height:20px;font-size:4px;border:0px;">员</button>最高价：<?php echo $hprice;?>元 &nbsp;&nbsp;&nbsp;&nbsp;(<?php echo $hname;?>)<br/><br/>
-<button type="button" class="btn btn-danger" style="background:#428bca;color:#428bca;height:20px;font-size:4px;border:0px;">员</button>最低价：<?php echo $lprice;?>元 &nbsp;&nbsp;&nbsp;&nbsp;(<?php echo $lname;?>)<br/><br/>
+<button type="button" class="btn btn-danger" style="background:#428bca;color:#428bca;height:20px;font-size:4px;border:0px;">员</button>&nbsp;&nbsp;总数：<?php echo $total;?>个<br/><br/>
+<button type="button" class="btn btn-danger" style="background:#428bca;color:#428bca;height:20px;font-size:4px;border:0px;">员</button>&nbsp;&nbsp;平均价格：<?php echo $price;?>元<br/><br/>
+<button type="button" class="btn btn-danger" style="background:#428bca;color:#428bca;height:20px;font-size:4px;border:0px;">员</button>&nbsp;&nbsp;最高价：<?php echo $hprice;?>元 &nbsp;&nbsp;&nbsp;&nbsp;(<?php echo $hname;?>)<br/><br/>
+<button type="button" class="btn btn-danger" style="background:#428bca;color:#428bca;height:20px;font-size:4px;border:0px;">员</button>&nbsp;&nbsp;最低价：<?php echo $lprice;?>元 &nbsp;&nbsp;&nbsp;&nbsp;(<?php echo $lname;?>)<br/><br/>
 </div>
 </div>
 <div style="margin:auto;text-align:center;width:63%;">

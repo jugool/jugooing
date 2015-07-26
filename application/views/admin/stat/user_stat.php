@@ -19,10 +19,10 @@
 </div>
 <div>
 <div style="width:60%;margin:auto;margin-top:20px;">
-<button type="button" class="btn btn-danger" style="background:#000;color:#000;height:20px;font-size:4px;border:0px;">员</button>总人数<?php echo $total;?>人<br/><br/>
-<button type="button" class="btn btn-danger" style="background:#428bca;color:#428bca;height:20px;font-size:4px;border:0px;">员</button>管理员<?php echo $ad_user;?>人<br/><br/>
-<button type="button" class="btn btn-danger" style="background:red;color:#f00;height:20px;font-size:4px;border:0px;">员</button>有效用户<?php echo $un_user;?>人<br/><br/>
-<button type="button" class="btn btn-danger" style="background:yellow;color:yellow;height:20px;font-size:4px;border:0px;">员</button>无效用户<?php echo $or_user;?>人
+<button type="button" class="btn btn-danger" style="background:#000;color:#000;height:20px;font-size:4px;border:0px;">员</button>&nbsp;&nbsp;总人数<?php echo $total;?>人<br/><br/>
+<button type="button" class="btn btn-danger" style="background:#428bca;color:#428bca;height:20px;font-size:4px;border:0px;">员</button>&nbsp;&nbsp;管理员<?php echo $ad_user;?>人<br/><br/>
+<button type="button" class="btn btn-danger" style="background:red;color:#f00;height:20px;font-size:4px;border:0px;">员</button>&nbsp;&nbsp;有效用户<?php echo $un_user;?>人<br/><br/>
+<button type="button" class="btn btn-danger" style="background:yellow;color:yellow;height:20px;font-size:4px;border:0px;">员</button>&nbsp;&nbsp;无效用户<?php echo $or_user;?>人
 </div>
 </div>
 <div style="margin:auto;text-align:center;width:62%;">
