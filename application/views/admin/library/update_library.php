@@ -41,11 +41,11 @@
                                 </span>
                             </div>
                             -->
-                            <input type='file' name='imgsrc' id="upfile" value="<?php echo $img0;?>">
+                            <input type='file' name='imgsrc' id="upfile">
                         </div>
                     </div>
 					<div class="form-group" style="margin-left:17%;">
-         				<img alt="<?php echo $library->name.'图片';?>" style="width: 180px; height: 120px;" src="<?php echo $library->images;?>" >
+         				<img alt="暂无图片" style="width: 180px; height: 120px;" src="<?php echo $library->images;?>" >
    					</div>
                     <div class="form-group">
                         <label class="col-xs-2 control-label">价格</label>

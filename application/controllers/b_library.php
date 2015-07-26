@@ -186,13 +186,16 @@ class B_library extends CI_Controller
     		$query = $this->db->get('library');
     		$data['library'] = $query->result();
     		$data['library'] = $data['library'][0];
-    			
-    		$data['img0'] = $data['library']->images;
-    		// 处理下图片路径
-    		$imgs = explode('jugooing' , $data['library']->images);
-    		$imgs[1] = substr($imgs[1], 1);
-    		$base_url = $this->config->base_url();
-    		$data['library']->images = str_replace("\\","/",$base_url.$imgs[1]);
+    		
+    		if (!empty($data['library']->images))
+    		{
+    			$data['img0'] = $data['library']->images;
+    			// 处理下图片路径
+    			$imgs = explode('jugooing' , $data['library']->images);
+    			$imgs[1] = substr($imgs[1], 1);
+    			$base_url = $this->config->base_url();
+    			$data['library']->images = str_replace("\\","/",$base_url.$imgs[1]);
+    		}
     		$this->load->view("admin/library/update_library", $data);
     	}
     	else{
@@ -242,5 +245,32 @@ class B_library extends CI_Controller
     			redirect('b_library/llist');
     		}
     	}
+    }
+    
+    /**
+     * 菜品详情
+     */
+    /**
+     * 菜品修改页面
+     */
+    public function ldetail()
+    {
+    	$this->db->select('*');
+    	$this->db->where('id', $_GET['id']);
+    	$query = $this->db->get('library');
+    	$data['library'] = $query->result();
+    	$data['library'] = $data['library'][0];
+    	
+    	
+    	if (!empty($data['library']->images))
+    	{
+    		// 处理下图片路径
+    		$imgs = explode('jugooing' , $data['library']->images);
+    		$imgs[1] = substr($imgs[1], 1);
+    		$base_url = $this->config->base_url();
+    		$data['library']->images = str_replace("\\","/",$base_url.$imgs[1]);
+    	}
+    	
+    	$this->load->view("admin/library/detail_library", $data);
     }
 }

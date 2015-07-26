@@ -37,7 +37,7 @@
         <td>
             <a href="lupdate?id=<?php echo $val->id;?>">修改</a> |
             <a href="ldelete?id=<?php echo $val->id;?>" onclick= "if(confirm( '确定删除？ ')==false)return   false; ">删除</a> |
-        	<a href="ldetails?id=<?php echo $val->id;?>">详情</a>
+        	<a href="ldetail?id=<?php echo $val->id;?>">详情</a>
         </td>
     </tr>
 <?php }?>
