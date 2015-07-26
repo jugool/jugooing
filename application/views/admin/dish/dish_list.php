@@ -8,7 +8,7 @@
 
 <div class="table_list">
     <form class="navbar-form navbar-left" role="add">
-        <a href="add_dishs" type="button" class="btn btn-info btn_add">添加菜单</a>
+        <a href="add_dish" type="button" class="btn btn-info btn_add">菜单添加</a>
     </form>
     <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
