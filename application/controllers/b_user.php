@@ -105,9 +105,9 @@ class B_user extends CI_Controller {
 			$data['type'] = $_POST['user_type'];
 			$data['job_number'] = $_POST['job_number'];
 			$data['password']= md5(md5($_POST['password']));
-			if (!empty($_POST['telphone']))
+			if (!empty($_POST['telephone']))
 			{
-				$data['telephone'] = $_POST['telphone'];
+				$data['telephone'] = $_POST['telephone'];
 			}
 			if (!empty($_POST['qq']))
 			{
@@ -146,9 +146,9 @@ class B_user extends CI_Controller {
 			$data['type'] = $_POST['user_type'];
 			$data['job_number'] = $_POST['job_number'];
 			$data['password']= md5(md5($_POST['password']));
-			if (!empty($_POST['telphone']))
+			if (!empty($_POST['telephone']))
 			{
-				$data['telephone'] = $_POST['telphone'];
+				$data['telephone'] = $_POST['telephone'];
 			}
 			if (!empty($_POST['qq']))
 			{
