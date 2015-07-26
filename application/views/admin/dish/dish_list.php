@@ -8,7 +8,7 @@
 
 <div class="table_list">
     <form class="navbar-form navbar-left" role="add">
-        <a href="add_dish" type="button" class="btn btn-info btn_add">菜单添加</a>
+        <a href="dadd" type="button" class="btn btn-info btn_add">菜单添加</a>
     </form>
     <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
@@ -22,98 +22,46 @@
     <tr>
         <th>ID</th>
         <th>菜名</th>
+        <th>数量</th>
         <th>订餐时间段</th>
         <th>上架时间</th>
         <th>创建时间</th>
         <th>操作</th>
     </tr>
+    <?php foreach($list as $item){ ?>
     <tr>
-        <td>1</td>
-        <td>土豆烧牛肉</td>
-        <td>中午</td>
-        <td>今天</td>
-        <td>2014/10/23</td>
+        <td><?php echo $item['id'];?></td>
+        <td><?php echo $item['name'];?></td>
+        <td><?php echo $item['dish_num'];?></td>
+        <td><?php
+            if($item['dish_time'] === 'am'){
+                echo "中午";
+            }else{
+                echo "晚上";
+            }
+            ?>
+        </td>
+        <td><?php echo $item['dish_day'];?></td>
+        <td><?php echo date('Y-m-d',$item['create_time']);?></td>
         <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
+            <a href="ddelete?id=<?php echo $item['id'];?>" onclick= "if(confirm( '确定删除？ ')==false)return false; ">删除</a>
         </td>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>土豆烧牛肉</td>
-        <td>中午</td>
-        <td>今天</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>土豆烧牛肉</td>
-        <td>中午</td>
-        <td>今天</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>土豆烧牛肉</td>
-        <td>中午</td>
-        <td>今天</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>土豆烧牛肉</td>
-        <td>中午</td>
-        <td>今天</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>土豆烧牛肉</td>
-        <td>中午</td>
-        <td>今天</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>土豆烧牛肉</td>
-        <td>中午</td>
-        <td>今天</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
+    <?php }?>
 </table>
+<?php
+    $page_index = $this->input->get('page')?$this->input->get('page'):'1';
+    if($page_index+1 > $total_page){
+        $page_index = $total_page;
+    }
+?>
 <nav>
     <ul class="pagination">
-        <li><a href="javascript:;">总页数：27</a></li>
-        <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
-        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+        <li><a>页数：<?php echo $page;?>/<?php echo $total_page;?></a></li>
+        <li><a aria-label="Next" href="dlist?page=<?php echo $page_index-1;?>"><span aria-hidden="true">«</span></a></li>
+        <?php for($i=1;$i<=$total_page;$i++) { ?>
+            <li class="<?php if($page_index == $i)echo 'active';?>"><a href="dlist?page=<?php echo $i?>"><?php echo $i;?></a></li>
+        <?php }?>
+        <li><a aria-label="Next" href="dlist?page=<?php echo $page_index+1;?>"><span aria-hidden="true">»</span></a></li>
     </ul>
 </nav>
