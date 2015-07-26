@@ -23,15 +23,14 @@ CREATE TABLE `user` (
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'admin', '1', '1', 'c3284d0f94606de1fd2af172aba15bf3', '123456@qq.com', '1234567890', '123456', 'fdsavwrjtytej', '0', null, null, null);
 
-CREATE TABLE `dish_library` (
+CREATE TABLE `library` (
   `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '菜品库主键ID',
   `name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '菜品名称',
   `descript` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '菜品描述',
-  `images` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '菜品图片地址',
+  `images` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '菜品图片地址',
   `price` float(5,1) DEFAULT NULL COMMENT '价格',
-  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
-  `modify_time` int(11) DEFAULT NULL COMMENT '修改时间',
-  `is_show` tinyint(1) DEFAULT NULL COMMENT '是否展示',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `modify_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='菜品库';
 
@@ -41,7 +40,7 @@ CREATE TABLE `dishes` (
   `dish_day` date DEFAULT NULL COMMENT '菜品上架时间',
   `dish_time` char(6) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '订餐时间段',
   `dish_num` tinyint(4) DEFAULT NULL COMMENT '菜品数量',
-  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='菜单表';
 

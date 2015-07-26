@@ -8,100 +8,69 @@
 
 <div class="table_list">
     <form class="navbar-form navbar-left" role="add">
-        <a href="add_dishs" type="button" class="btn btn-info btn_add">添加菜品</a>
+        <a href="../b_library/ladd" type="button" class="btn btn-info btn_add">添加菜品</a>
     </form>
-    <form class="navbar-form navbar-right" role="search">
+    <form class="navbar-form navbar-right" role="search" action="llist" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="输入菜名查找" name="like">
         </div>
         <button type="submit" class="btn btn-default">查询</button>
     </form>
 </div>
 
-<table class="table table-striped table-bordered table-hover table-condensed">
+<table class="table table-striped table-bordered table-hover table-condensed" style="font-size:12px;">
     <tr>
         <th>ID</th>
         <th>菜名</th>
-        <th>图片</th>
-        <th>价格</th>
+        <th>描述</th>
+        <th>价格(元)</th>
         <th>创建时间</th>
         <th>操作</th>
     </tr>
+    <?php  foreach ($library_list as $k => $val){ ?>
     <tr>
-        <td>1</td>
-        <td>回锅肉</td>
+        <td><?php echo $val->id; ?></td>
+        <td><?php echo $val->name; ?></td>
+        <td><?php echo $val->descript; ?></td>
+        <td><?php echo $val->price; ?></td>
+        <td><?php echo $val->create_time; ?></td>
         <td>
-            <img alt="120x180" class="img-rounded" data-src="holder.js/140x140" style="width: 180px; height: 120px;" src="<?php echo base_url();?>/public/upload/library/bbq.jpg" data-holder-rendered="true">
-        </td>
-        <td>18.5元</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
+            <a href="lupdate?id=<?php echo $val->id;?>">修改</a> |
+            <a href="ldelete?id=<?php echo $val->id;?>" onclick= "if(confirm( '确定删除？ ')==false)return   false; ">删除</a> |
+        	<a href="ldetails?id=<?php echo $val->id;?>">详情</a>
         </td>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>回锅肉</td>
-        <td>
-            <img alt="120x180" class="img-rounded" data-src="holder.js/140x140" style="width: 180px; height: 120px;" src="<?php echo base_url();?>/public/upload/library/bbq.jpg" data-holder-rendered="true">
-        </td>
-        <td>18.5元</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>回锅肉</td>
-        <td>
-            <img alt="120x180" class="img-rounded" data-src="holder.js/140x140" style="width: 180px; height: 120px;" src="<?php echo base_url();?>/public/upload/library/bbq.jpg" data-holder-rendered="true">
-        </td>
-        <td>18.5元</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>回锅肉</td>
-        <td>
-            <img alt="120x180" class="img-rounded" data-src="holder.js/140x140" style="width: 180px; height: 120px;" src="<?php echo base_url();?>/public/upload/library/bbq.jpg" data-holder-rendered="true">
-        </td>
-        <td>18.5元</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>回锅肉</td>
-        <td>
-            <img alt="120x180" class="img-rounded" data-src="holder.js/140x140" style="width: 180px; height: 120px;" src="<?php echo base_url();?>/public/upload/library/bbq.jpg" data-holder-rendered="true">
-        </td>
-        <td>18.5元</td>
-        <td>2014/10/23</td>
-        <td>
-            <a href="javascript:;">修改</a> |
-            <a href="javascript:;">删除</a>
-        </td>
-    </tr>
+<?php }?>
 </table>
 <nav>
     <ul class="pagination">
-        <li><a href="javascript:;">总页数：27</a></li>
-        <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
-        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+        <li><a>页数：<?php echo $page;?>/<?php echo $total_page;?></a></li>
+        <li><a aria-label="Next" href="llist?page=<?php echo --$page;?>"><span aria-hidden="true">«</span></a></li>
+        <?php 
+        	++$page;
+        	$page1 = $page;
+        	if ($total_page >= 5)
+        	{
+        		$j = 5;
+        	}
+        	else 
+        	{
+        		$j = $total_page;
+        	}
+        	for ($i = 1; $i<=$j; $i++)
+        	{
+        		if ($page1 <= $total_page){
+        		if ($page1 == $page)
+        		{
+        ?>
+        	<li class="active"><a href="llist?page=<?php echo $page1;?>"><?php echo $page1; ?><span class="sr-only">(current)</span></a></li>
+        <?php }else{ ?>
+        	<li><a href="llist?page=<?php echo $page1?>"><?php echo $page1;?></a></li>
+        <?php }?>
+        <?php 
+        	++$page1;
+        	}}
+        ?>
+        <li><a aria-label="Next" href="llist?page=<?php echo (++$page);?>"><span aria-hidden="true">»</span></a></li>
     </ul>
 </nav>

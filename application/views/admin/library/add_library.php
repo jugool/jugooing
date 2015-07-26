@@ -2,12 +2,13 @@
 
 <!--<link rel="stylesheet" href="--><?php //echo base_url(); ?><!--public/vendor/bootstrap/css/bootstrap.css"/>-->
 <link rel="stylesheet" href="<?php echo base_url();?>public/css/bootstrapValidator.css"/>
-<script type="text/javascript" src="<?php echo base_url(); ?>public/js/bootstrap.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>public/js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>public/js/bootstrap.js"></script>
+
 <script type="text/javascript" src="<?php echo base_url(); ?>public/js/bootstrapValidator.js"></script>
 <ol class="breadcrumb">
-    <li><a href="#">菜品管理</a></li>
-    <li><a href="#">菜品库</a></li>
+    <li><a>菜品管理</a></li>
+    <li><a>菜品库</a></li>
     <li class="active">添加菜品</li>
 </ol>
 
@@ -16,31 +17,35 @@
         <!-- form: -->
         <section>
             <div class="col-lg-8 col-lg-offset-2">
-                <div class="page-header">
+               <!--  <div class="page-header">
                     <h3>菜品添加</h3>
-                </div>
-                <form id="defaultForm" method="post" class="form-horizontal" action="target.php" enctype="multipart/form-data">
+                </div> -->
+                <form id="defaultForm" method="post" class="form-horizontal" action="ladd" enctype="multipart/form-data">
 
                     <div class="form-group">
-                        <label for="name" class="col-xs-2 control-label">菜品名称</label>
+                        <label for="name" class="col-xs-2 control-label">名称</label>
                         <div class="col-xs-2">
                             <input type="text" id="name" class="form-control" name="name"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-xs-2 control-label">菜品图片</label>
+                        <label class="col-xs-2 control-label">图片</label>
                         <div class="col-xs-4">
-                            <input id="upfile" type="file" style="display:none">
+                            <!--  <input id="upfile" type="file" style="display:none">
                             <div class="input-group">
                                 <input type="text" id="photoCover" name="upfile" class="form-control" placeholder="选择图片">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button" onclick="$('input[id=upfile]').click();">选择图片</button>
                                 </span>
                             </div>
+                            -->
+                            <input type='file' name='imgsrc' id="upfile">
                         </div>
                     </div>
-
+					<!--  <div class="form-group" style="margin-left:17%;">
+         				<img alt="120x180" class="img-rounded" data-src="holder.js/140x140" style="width: 180px; height: 120px;" src="<?php echo base_url();?>/public/upload/library/bbq.jpg" data-holder-rendered="true">
+   					</div>-->
                     <div class="form-group">
                         <label class="col-xs-2 control-label">价格</label>
                         <div class="col-xs-2">
@@ -49,7 +54,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-xs-2 control-label">菜品介绍</label>
+                        <label class="col-xs-2 control-label">介绍</label>
                         <div class="col-xs-3">
                             <textarea class="form-control" rows="3" name="descript"></textarea>
                         </div>
@@ -73,6 +78,37 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
+        // 内容改变
+        $("#upfile").change(function(){
+            
+			/* img_src = $("#upfile").val();
+			alert(img_src);
+            $(".img-rounded").attr("src", img_src);
+            $("#defaultForm").submit();
+            $("#uploadfile").change(function(){
+            	 */
+            	/*   alert(0);
+            	 $('#defaultForm').attr('action','laddimg');
+            	 alert(1);
+            	 $('#defaultForm').ajaxSubmit(); 
+            	 return false;  */
+            	 /* $('#defaultForm').ajaxForm({  
+            		 	type:"post",
+            	        success: function(data)
+            	        {
+							alert(data);
+                   	    }
+            	    })  */
+            }) 
+           	/* jQuery.ajax({
+           		type:"post",
+           		url:"laddimg",
+           		enctype:"multipart/form-data",
+           		data:jQuery("#defaultForm"),
+           		success: function(data) {
+					alert(data);
+               	} */
+        
         $('input[id=upfile]').change(function() {
             $('#photoCover').val($(this).val());
         });
