@@ -196,7 +196,7 @@ class B_library extends CI_Controller
     		$this->load->view("admin/library/update_library", $data);
     	}
     	else{
-    		if (!empty($_FILES['imgsrc'])){
+    		if (!empty($_FILES['imgsrc']['name'])){
     			// 先处理图片上传
     			$re = $this::uploadImg();
     		
