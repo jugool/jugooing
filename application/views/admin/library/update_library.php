@@ -48,7 +48,7 @@
          				<img alt="暂无图片" style="width: 180px; height: 120px;" src="<?php echo $library->images;?>" >
    					</div>
                     <div class="form-group">
-                        <label class="col-xs-2 control-label">价格</label>
+                        <label class="col-xs-2 control-label">价格(元)</label>
                         <div class="col-xs-2">
                             <input type="text" class="form-control" name="price" value="<?php echo $library->price;?>"/>
                         </div>

@@ -44,4 +44,13 @@ CREATE TABLE `dishes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='菜单表';
 
+CREATE TABLE `order` (
+  `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '订单表主键ID',
+  `l_id` int(8) DEFAULT NULL COMMENT '菜品ID',
+  `u_id` int(8) DEFAULT NULL COMMENT '用户ID',
+  `dish_day` date DEFAULT NULL COMMENT '菜品上架时间',
+  `dish_time` char(6) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '订餐时间段',
+  `order_time` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='订单表';
 

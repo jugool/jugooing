@@ -128,7 +128,7 @@
                             message: '用户名是必填项，且不能为空'
                         },
                         stringLength: {
-                            min: 4,
+                            min: 2,
                             max: 16,
                             message: '用户名的字符长度必须大于4，小于16'
                         }

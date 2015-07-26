@@ -20,12 +20,17 @@ class B_library extends CI_Controller
 	 */
 	public function llist()
     {
+    	$like = isset($_POST['like']) ? $_POST['like'] : 0;
     	$this->db->select('*');
+    	if (!empty($like))
+    	{
+    		$this->db->like('name', "$like");
+    	}
     	$query = $this->db->get('library');
     	$total_page = ceil(count($query->result())/($this->page_size));
     	
     	$page = isset($_GET['page']) ? $_GET['page'] : 0;
-    	$like = isset($_POST['like']) ? $_POST['like'] : 0;
+    	
     	
     	if ($page <= 0)
     	{
