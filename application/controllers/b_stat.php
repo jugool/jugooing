@@ -92,7 +92,7 @@ class B_stat extends CI_Controller {
 	}
 	
 	/**
-	 * 
+	 * 资费统计
 	 */
 	public function ostat()
 	{
