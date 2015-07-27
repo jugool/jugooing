@@ -172,6 +172,11 @@ class B_stat extends CI_Controller {
 				
 				$data['price'] = $data['prices'] /$data['total'];
 			}
+			if ($data['lprice'] == 100000)
+			{
+				$data['lprice'] = 0;
+			}
+		}
 			
 			$this->load->view('admin/stat/order_stat', $data);
 		}
