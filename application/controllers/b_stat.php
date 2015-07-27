@@ -176,7 +176,6 @@ class B_stat extends CI_Controller {
 			{
 				$data['lprice'] = 0;
 			}
-		}
 			
 			$this->load->view('admin/stat/order_stat', $data);
 		}
