@@ -43,8 +43,8 @@ class b_dish extends CI_Controller
         {
             $this->db->like('name', "$like");
         }
-        $this->db->select('dishes.*,dish_library.name');
-        $this->db->join('dish_library', 'dish_library.id = dishes.l_id', 'left');
+        $this->db->select('dishes.*,library.name');
+        $this->db->join('library', 'library.id = dishes.l_id', 'left');
         $this->db->limit($end, $start);
         $temp = $this->db->get($this->table_name)->result();
         $data['list'] = $this->objectToArray($temp);
@@ -90,8 +90,8 @@ class b_dish extends CI_Controller
             foreach($list as $id)
             {
                 //首先查看是否已经添加过了该菜品
-                $this->db->select('dishes.*,dish_library.name');
-                $this->db->join('dish_library', 'dish_library.id = dishes.l_id', 'left');
+                $this->db->select('dishes.*,library.name');
+                $this->db->join('library', 'library.id = dishes.l_id', 'left');
                 $this->db->where('l_id',$id);
                 $this->db->where('dish_day',$this->input->post('shelves_time'));
                 $this->db->where('dish_time',$this->input->post('dish_time'));
@@ -131,7 +131,7 @@ class b_dish extends CI_Controller
         {
             $this->db->select('id,name');
             $this->db->where('is_show', 1); //必须是已经开启展示的菜品
-            $data['dish_list'] = $this->db->get('dish_library')->result();
+            $data['dish_list'] = $this->db->get('library')->result();
             $this->load->view('admin/dish/add_dish', $data);
         }
     }
