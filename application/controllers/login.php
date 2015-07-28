@@ -4,13 +4,64 @@
  * @author bocley
  */
 class Login extends CI_Controller {
-	
-	/**
-	 * 首页
-	 */
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper(array(
+            'form',
+            'url'
+        ));
+        $this->load->library('session');
+    }
+
+    /**
+     * 登录验证
+     */
 	public function index()
 	{
-			echo '前台登录';
+        //登录验证
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('user_name', '用户名', 'trim|required|min_length[1]|max_length[8]');
+        $this->form_validation->set_rules('password', '密码', 'trim|required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('login');
+        } else {
+            if (isset ($_POST['submit']) && !empty ($_POST['submit'])) {
+                if($this->form_validation->run() !== false){
+                    //从Model层 验证用户
+                    $this->load->model('adminModel');
+                    $result = $this->adminModel->verify_users(
+                        $this->input->post('user_name'),
+                        $this->input->post('password')
+                    );
+                    $login_info = array();
+                    //验证是否登陆成功
+                    if($result !== false){
+                        //设置登录Session
+                        $login_info['id'] = $result->id;
+                        $login_info['user_name'] = $result->name;
+                        $login_info['login_ip'] = $this->input->ip_address();
+                        $this->session->set_userdata('user_info', $login_info);
+                        //成功后跳转
+                        $data['user_name'] = $login_info['user_name'];
+                        redirect('index');
+                    }else{
+                        echo "<script>window.alert('该用户不存在或密码错误！');</script>";
+                        $this->load->view('login');
+                    }
+                }
+            }
+        }
 	}
+
+    /**
+     * 退出登录
+     */
+    public function login_out()
+    {
+        $this->session->sess_destroy();//注销所有session变量
+        redirect('index');
+    }
 	
 }
