@@ -54,3 +54,5 @@ CREATE TABLE `order` (
   PRIMARY KEY (`id`),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='订单表';
 
+ALTER TABLE `library`
+MODIFY COLUMN `is_show`  tinyint(1) NULL DEFAULT 1 COMMENT '是否展示' AFTER `modify_time`;

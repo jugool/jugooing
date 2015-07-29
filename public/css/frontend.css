@@ -885,10 +885,32 @@ ul.list_6{
 	margin:0;
 	list-style:none;
 }
-p.movie__option a{
+p.movie__option{
 	font-weight:500;
-	font-size:1em;
+	font-size:0.9em;
 	color:#000;
+}
+.movie_box .confirm-dish{
+    margin: 20px 0px;
+}
+.movie_box .confirm-dish p{
+    margin-bottom: 15px;
+    line-height: 36px;
+}
+.movie{
+    height:180px;
+}
+.movie .movie__images{
+    padding: 21px 12px;
+}
+.movie .movie__time span{
+    color: red;
+}
+.movie .movie__info{
+    height:180px;
+}
+.movie .movie__info .dish_num{
+    margin:5px 0px;
 }
 .movie_img{
 	margin-bottom:2em;

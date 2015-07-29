@@ -22,7 +22,7 @@ class Login extends CI_Controller {
 	{
         //登录验证
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('user_name', '用户名', 'trim|required|min_length[1]|max_length[8]');
+        $this->form_validation->set_rules('job_number', '工号', 'trim|required|min_length[1]|max_length[6]');
         $this->form_validation->set_rules('password', '密码', 'trim|required');
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('login');
@@ -31,8 +31,8 @@ class Login extends CI_Controller {
                 if($this->form_validation->run() !== false){
                     //从Model层 验证用户
                     $this->load->model('adminModel');
-                    $result = $this->adminModel->verify_users(
-                        $this->input->post('user_name'),
+                    $result = $this->adminModel->verify_job(
+                        $this->input->post('job_number'),
                         $this->input->post('password')
                     );
                     $login_info = array();
@@ -41,6 +41,7 @@ class Login extends CI_Controller {
                         //设置登录Session
                         $login_info['id'] = $result->id;
                         $login_info['user_name'] = $result->name;
+                        $login_info['job_number'] = $result->job_number;
                         $login_info['login_ip'] = $this->input->ip_address();
                         $this->session->set_userdata('user_info', $login_info);
                         //成功后跳转

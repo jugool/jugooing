@@ -31,13 +31,14 @@
             <div class="col-sm-6 nav">
                 <ul>
                     <li><span class="simptip-position-bottom simptip-movable" data-tooltip="首页"><a href="<?php echo site_url('index');?>"> </a></span></li>
+                    <li><span class="simptip-position-bottom simptip-movable" data-tooltip="明天"><a href="javascript:;"> </a></span></li>
                 </ul>
             </div>
             <div class="col-sm-3 header_right">
                 <ul class="header_right_box">
                     <li><img src="<?php echo base_url();?>public/images/frontend/p1.png" alt=""/></li>
                     <li>
-                        <p><a href="login.html"><?php if(!empty($user_name))echo $user_name; else echo "未登录";?></a></p>
+                        <p><a href="login.html"><?php if(!empty($this->session->userdata['user_info']))echo $this->session->userdata['user_info']['user_name']; else echo "未登录";?></a></p>
                     </li>
                     <li class="last">
                         <i class="edit"> </i>

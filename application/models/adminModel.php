@@ -16,7 +16,7 @@ class adminModel extends CI_Model
     }
 
     /**
-     * 登录验证
+     * 登录验证(后台)
      * @param string $user 用户名
      * @param string $password 密码
      * @return boolean 是否存在
@@ -32,6 +32,24 @@ class adminModel extends CI_Model
         }
         return false;
     }
+    /**
+     * 登录验证(前台)
+     * @param string $user 用户名
+     * @param string $password 密码
+     * @return boolean 是否存在
+     */
+    public function verify_job($job, $password){
+        $this->db->select('*');
+        $this->db->where('job_number',$job);
+        $this->db->where('password',md5(md5($password)));
+        $this->db->where('type',0);
+        $query = $this->db->get('user');
+        if($query->num_rows > 0){
+            return $query->row();
+        }
+        return false;
+    }
+
 
     /**
      * 插入一条数据
