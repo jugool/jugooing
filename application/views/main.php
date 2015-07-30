@@ -1,14 +1,19 @@
 <?php $this->load->view('header');?>
 
 <div class="content">
-    <h2 class="m_3">午餐<small>（当前已点：极品肥牛干锅）</small></h2><!-- movie-test-light movie-test-right -->
+    <h2 class="m_3">午餐
+        <small>
+            （当前已点：<?php if(!empty($this_people)) echo $this_people; else echo "当前暂未点餐";?>）
+            <a href="javascript:;">取消</a>
+        </small>
+    </h2><!-- movie-test-light movie-test-right -->
         <div class="movie_top">
             <div class="col-md-9 movie_box">
 
                 <!-- Dish list -->
                 <?php foreach($dish_list as $key=>$item){?>
                 <div class="movie movie-test <?php if($item['arrange'] === true) echo "movie-test-dark movie-test-left";else echo "movie-test-light movie-test-right";?>">
-                    <div class="movie__images" id="dish_<?=$item['id']?>">
+                    <div class="movie__images" id="library_<?=$item['l_id']?>">
                         <a href="javascript:;" class="movie-beta__link" >
                             <img alt="当前无图片" src="<?php echo $item['images'];?>" class="img-responsive" />
                         </a>
@@ -26,20 +31,20 @@
                 </div>
                 <?php }?>
                 <script type="text/javascript">
-                    $(function() {
+                    $(function () {
                         var num = 0;
-                        $(".movie .movie__images").click(function(e) {
-                            var num = $(this).next().find('input').val();
+                        $(".movie .movie__images").click(function (e) {
+                            var num = $(this).next().find('input').val(); //获取选取菜品数量
                             var name = $(this).next().find('a').html();
                             var id = $(this).attr('id');
-                            id = id.split('dish_');
-                            $(this).next().find('input').val(parseInt(num)+1);
+                            id = id.split('_'); //获取当前菜品ID
+                            var number = parseInt(num) + 1;
+                            $(this).next().find('input').val(number);
                             var index_dish = $('#made_dish').html();
-                            alert(id);
-                            if(index_dish.indexOf(name)>0){
-
-                            }else{
-                                $('#made_dish').append("<b id=already_"+id+">"+name+"*1"+"</b>,");
+                            if (index_dish.indexOf(name) > 0) {
+                                $('#already_' + id[1]).html(name + "*" + number);
+                            } else {
+                                $('#made_dish').append("<b id=already_" + id[1] + ">" + name + "*1" + "</b>,");
                             }
                         });
                     });
@@ -47,12 +52,52 @@
                 <!-- Dish list end -->
 
                 <div class="clearfix"></div>
-
                 <div class="form-submit1 confirm-dish">
-                    <p class="bg-primary">目前已点：<span id="made_dish"></span></p>
+                    <p class="bg-info">目前已点：<span id="made_dish"></span></p>
                     <input type="submit" value="确定点餐" id="submit" name="submit"><br>
                 </div>
-
+                <script type="text/javascript">
+                    $(function(){
+                        $("#submit").click(function(){
+                            if(confirm("你已经确定要提交订单了吗？")){
+                                var order = $("#made_dish").html();
+                                var mydate = new Date();
+                                var date1 = mydate.toLocaleDateString(); //当前日期
+                                var H = mydate.getHours();
+                                if(H<11){
+                                    var date2 = "am";
+                                }else{
+                                    var date2 = "pm";
+                                }
+                                if(order.length>0){
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "order_process",
+                                        data: {order_list:order,date1:date1,date2:date2},
+                                        dataType: "json",
+                                        success: function(data){
+                                            if (data == 2) {
+                                                window.alert('当前时间你已订餐，如需修改，请取消当前订餐');
+                                                location.reload();
+                                            } else if (data == true) {
+                                                window.alert('你已经成功订餐');
+                                                location.reload();
+                                            } else {
+                                                window.alert('订餐失败了');
+                                                location.reload();
+                                            }
+                                        }
+                                    });
+                                }else{
+                                    window.alert("你还没有选择菜品呢！");
+                                    return false;
+                                }
+                            }else{
+                                return false;
+                            }
+                        });
+                    })
+                </script>
                 <div class="clearfix"></div>
 
                 <!-- Movie variant with time -->

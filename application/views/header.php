@@ -42,7 +42,7 @@
                     </li>
                     <li class="last">
                         <i class="edit"> </i>
-                        <?php if(!empty($user_name)){?>
+                        <?php if(!empty($this->session->userdata['user_info'])){?>
                         <span><a href="<?php echo site_url('login/login_out')?>" alt="退出">退出</a></span>
                         <?php }?>
                     </li>

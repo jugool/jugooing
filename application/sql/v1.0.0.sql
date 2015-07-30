@@ -56,3 +56,7 @@ CREATE TABLE `order` (
 
 ALTER TABLE `library`
 MODIFY COLUMN `is_show`  tinyint(1) NULL DEFAULT 1 COMMENT '是否展示' AFTER `modify_time`;
+
+ALTER TABLE `order`
+ADD COLUMN `num`  tinyint(4) NULL DEFAULT 0 COMMENT '订餐数量' AFTER `u_id`;
+

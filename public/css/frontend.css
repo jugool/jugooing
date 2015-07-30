@@ -895,7 +895,9 @@ p.movie__option{
 }
 .movie_box .confirm-dish p{
     margin-bottom: 15px;
+    padding-left: 10px;
     line-height: 36px;
+    letter-spacing: 2px;
 }
 .movie{
     height:180px;
@@ -1301,6 +1303,14 @@ text-transform: uppercase;
 	font-size:0.8125em;
 	padding:10px;
 	-webkit-appearance: none;
+}
+.login-right input[type="password"] {
+    border: 1px solid #E4E4E4;
+    outline-color:#d8232a;
+    width: 96%;
+    font-size:0.8125em;
+    padding:10px;
+    -webkit-appearance: none;
 }
 .login-right input[type="submit"] {
 	background: #d8232a;
