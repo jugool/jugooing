@@ -29,16 +29,25 @@
         <div class="header_top">
             <div class="col-sm-3 logo"><a href="index.html"><img src="<?php echo base_url();?>public/images/frontend/logo.png" alt=""/></a></div>
             <div class="col-sm-6 nav">
-                <ul>
+                <!--  <ul>
                     <li><span class="simptip-position-bottom simptip-movable" data-tooltip="首页"><a href="<?php echo site_url('index');?>"> </a></span></li>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/jugool/jugooing.git
                     <li><span class="simptip-position-bottom simptip-movable" data-tooltip="明天"><a href="javascript:;"> </a></span></li>
                 </ul>
+=======
+                </ul>-->
+>>>>>>> ab954f3 解决冲突
             </div>
             <div class="col-sm-3 header_right">
                 <ul class="header_right_box">
-                    <li><img src="<?php echo base_url();?>public/images/frontend/p1.png" alt=""/></li>
+                    
+                    <!--  <li><img src="<?php echo base_url();?>public/images/frontend/p1.png" alt=""/></li>-->
                     <li>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/jugool/jugooing.git
                         <p><a href="login.html"><?php if(!empty($this->session->userdata['user_info']))echo $this->session->userdata['user_info']['user_name']; else echo "未登录";?></a></p>
+=======
+                        <p><?php if(!empty($user_name))echo $user_name; else echo "填写登录";?></p>
+>>>>>>> ab954f3 解决冲突
                     </li>
                     <li class="last">
                         <i class="edit"> </i>

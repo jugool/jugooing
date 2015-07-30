@@ -22,7 +22,16 @@
                 <form id="defaultForm" method="post" class="form-horizontal" action="dadd">
 
                     <div class="form-group">
-                        <label class="col-xs-2 control-label">订餐时间段</label>
+                        <label for="shelves_time" class="col-xs-2 control-label">订餐时间</label>
+                        <div style="padding-left:15px;" class="input-group date form_date col-xs-3" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input class="form-control" size="16" type="text" name="shelves_time" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">订餐时段</label>
                         <div class="col-xs-2">
                             <select class="form-control" name="dish_time">
                                 <option value="am">中午</option>
@@ -31,17 +40,9 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="shelves_time" class="col-xs-2 control-label">上架时间</label>
-                        <div style="padding-left:15px;" class="input-group date form_date col-xs-3" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                            <input class="form-control" size="16" type="text" name="shelves_time" value="" readonly>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                        </div>
-                    </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-xs-2 control-label">已上架菜品</label>
+                        <label for="name" class="col-xs-2 control-label">添加菜品</label>
                         <div class="col-xs-7">
                             <table class="table table-condensed">
                                 <tbody>
