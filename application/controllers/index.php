@@ -73,7 +73,7 @@ class index extends CI_Controller
     }
 
 }
-=======
+/*
 class Index extends CI_Controller {	
 	
 	public function __construct()
@@ -177,4 +177,4 @@ class Index extends CI_Controller {
 		$this->load->view('admin/login');
 	}
 }
->>>>>>> ab954f3 解决冲突
+*/
