@@ -18,7 +18,7 @@
                     <p class="text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
                 </div>
                 <div class="footer_box">
-                    <div class="col_1_of_3 span_1_of_3">
+                   <!--<div class="col_1_of_3 span_1_of_3">
                         <h3>Categories</h3>
                         <ul class="first">
                             <li><a href="#">Dance</a></li>
@@ -34,15 +34,12 @@
                             <li><a href="#">Specials</a></li>
                         </ul>
                     </div>
+                      --> 
                     <div class="col_1_of_3 span_1_of_3">
-                        <h3>Follow Us</h3>
-                        <ul class="first">
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Youtube</a></li>
-                        </ul>
-                        <div class="copy">
-                            <p>Copyright © 2014 - 2015 jugool工作室版权所有®</p>
+                        
+                        <div class="copy" style="width:100%;margin-left:50%;">
+                            <p>© 2013-2015 jugool 版权所有</p>
+                           
                         </div>
                     </div>
                     <div class="clearfix"> </div>

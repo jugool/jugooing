@@ -148,3 +148,108 @@ class index extends CI_Controller
     }
 
 }
+/*
+class Index extends CI_Controller {	
+	
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->helper(array(
+				'form',
+				'url'
+		));
+		$this->load->library('session');
+		$this->load->database();
+	}
+	
+	/**
+	 * 前台登录
+	 */
+	public function index()
+	{
+		$is_login = $this->session->userdata('user_info');
+		if(!empty($is_login))
+		{
+			$data['user_name'] = $is_login;
+			redirect('index/main');
+		}else{ 
+			// 加载登录页面
+			$str = date('H:i:s');
+			$data['jugool'] = md5($str);
+			$this->session->set_userdata('jugool', $data['jugool']);
+			$this->load->view('login', $data);
+		}
+	
+	}
+	
+	/**
+	 * 后台首页
+	 */
+	public function main()
+	{
+		$is_login = $this->session->userdata('user_info');
+		if(!empty($is_login))
+		{
+			$data['boot_show'] = true;
+			$this->load->view('dish', $data);
+		}else{
+			// 加载登录页面
+			$str = date('H:i:s');
+			$data['jugool'] = md5($str);
+			$this->session->set_userdata('jugool', $data['jugool']);
+			$this->load->view('login', $data);
+		}
+		//echo 111;die();
+		// 加载前台中菜品页面
+		
+	}
+	
+	/**
+	 * 登录验证
+	 */
+	public function do_login()
+	{
+		// 安全验证
+		$jugool = $this->session->userdata('jugool');
+		$jugool1 = isset($_POST['jugoool'])?$_POST['jugoool']:0;
+		if ($jugool != $jugool1)
+		{
+			echo "<script>alert('非法登录!');history.back(-1);</script>";die();
+		}
+		
+		$job_number = isset($_POST['number'])?$_POST['number']:'';
+		$password = isset($_POST['password'])?$_POST['password']:'';
+		
+		$this->db->select('*');
+		$this->db->where('job_number', $job_number);
+		$this->db->where('type', 1);
+		$this->db->where('password', md5(md5($password)));
+		$re = $this->db->get('user');
+		$result = $re->result();
+		$login_info = array();
+		if (count($result) === 1)
+		{
+			//设置登录Session
+			$user_name = $result[0]->name;
+			$this->session->set_userdata('user_info', $user_name);
+			redirect('index');
+		}
+		else 
+		{
+			echo "<script>window.alert('该用户不存在或密码错误！');</script>";
+			$this->load->view('login');
+		}
+		
+	
+	}
+	
+	/**
+	 * 退出登录
+	 */
+	public function login_out()
+	{
+		$this->session->sess_destroy();//注销所有session变量
+		$this->load->view('admin/login');
+	}
+}
+*/

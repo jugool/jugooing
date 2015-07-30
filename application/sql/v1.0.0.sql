@@ -29,6 +29,7 @@ CREATE TABLE `library` (
   `descript` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '菜品描述',
   `images` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '菜品图片地址',
   `price` float(5,1) DEFAULT NULL COMMENT '价格',
+  `is_show` tinyint(1) DEFAULT '1' COMMENT '是否展示',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `modify_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)

@@ -11,10 +11,10 @@
                 <div>
                     <span><label>*</label>工号</span>
                     <?php
-                    echo form_input('job_number', set_value('job_number'), 'id="job_number" class="form-control" placeholder="Job_number" autocomplete="off"');
+                    echo form_input('user_name', set_value('user_name'), 'id="user_name" class="form-control" placeholder="Job_number" autocomplete="off"');
                     ?>
                 </div>
-                <?php echo form_error('job_number');?>
+                <?php echo form_error('user_name');?>
                 <div>
                     <span><label>*</label>密码</span>
                     <?php
