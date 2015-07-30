@@ -3,22 +3,18 @@
     <div class="content">
 
         <div class="col-md-6 login-right login">
-            <!--<h2>登&nbsp;录</h2>  -->
+            <h2>登&nbsp;录</h2>
 
-            <p>请用您的工号进行登录，如有问题，请联系管理员。</p>
+            <p>请用您的工号进行登录，如果忘记了，可以联系管理员找回。</p>
 
-            <?php echo form_open('./index/do_login');?>
+            <?php echo form_open('./login/index');?>
                 <div>
                     <span><label>*</label>工号</span>
                     <?php
-<<<<<<< Upstream, based on branch 'master' of https://github.com/jugool/jugooing.git
-                    echo form_input('job_number', set_value('job_number'), 'id="job_number" class="form-control" placeholder="Job_number" autocomplete="off"');
-=======
-                    echo form_input('number', set_value('number'), 'id="number" class="form-control" placeholder="number" autocomplete="off"');
->>>>>>> ab954f3 解决冲突
+                    echo form_input('user_name', set_value('user_name'), 'id="user_name" class="form-control" placeholder="Job_number" autocomplete="off"');
                     ?>
                 </div>
-                <?php echo form_error('job_number');?>
+                <?php echo form_error('user_name');?>
                 <div>
                     <span><label>*</label>密码</span>
                     <?php
@@ -26,11 +22,9 @@
                     ?>
                 </div>
             <?php echo form_error('password');?>
-            <input type='hidden' name='jugool' value='<?php echo $jugool;?>'>
                 <!--<a class="forgot" href="#">Forgot Your Password?</a>-->
             <?php echo form_submit('submit','登陆','class="btn btn-primary btn-login"');?>
             <?php echo form_close();?>
-            
         </div>
         <div class="clearfix"></div>
     </div>
