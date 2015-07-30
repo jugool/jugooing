@@ -64,5 +64,5 @@ class Login extends CI_Controller {
         $this->session->sess_destroy();//注销所有session变量
         redirect('index');
     }
-	
+
 }

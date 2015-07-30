@@ -7,14 +7,14 @@
 
             <p>请用您的工号进行登录，如果忘记了，可以联系管理员找回。</p>
 
-            <?php echo form_open('./login/index');?>
+            <?php echo form_open('login/index');?>
                 <div>
                     <span><label>*</label>工号</span>
                     <?php
-                    echo form_input('user_name', set_value('user_name'), 'id="user_name" class="form-control" placeholder="Job_number" autocomplete="off"');
+                    echo form_input('job_number', set_value('job_number'), 'id="job_number" class="form-control" placeholder="Job_number" autocomplete="off"');
                     ?>
                 </div>
-                <?php echo form_error('user_name');?>
+                <?php echo form_error('job_number');?>
                 <div>
                     <span><label>*</label>密码</span>
                     <?php
@@ -24,7 +24,7 @@
             <?php echo form_error('password');?>
                 <!--<a class="forgot" href="#">Forgot Your Password?</a>-->
             <?php echo form_submit('submit','登陆','class="btn btn-primary btn-login"');?>
-            <?php echo form_close();?>
+            </from>
         </div>
         <div class="clearfix"></div>
     </div>
