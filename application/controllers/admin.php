@@ -24,7 +24,6 @@ class Admin extends CI_Controller {
         if(is_array($is_login)&&!empty($is_login))
         {
             $data['user_name'] = $is_login['user_name'];
-            //$this->load->view('admin/index', $data);
             $this->load->view('admin/index', $data);
         }else{
             // 加载后台登录页面
@@ -81,8 +80,8 @@ class Admin extends CI_Controller {
                         $data['user_name'] = $login_info['user_name'];
                         redirect('admin');
                     }else{
-                        echo "<script>window.alert('该用户不存在或密码错误！');</script>";
-                        $this->load->view('admin/login');
+                        $data['error'] = '该用户不存在或密码错误！';
+                    	$this->load->view('admin/login', $data);
                     }
                 }
             }

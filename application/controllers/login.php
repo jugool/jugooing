@@ -48,7 +48,6 @@ class Login extends CI_Controller {
                         $data['user_name'] = $login_info['user_name'];
                         redirect('index');
                     }else{
-                        //echo "<script>window.alert('该用户不存在或密码错误！');</script>";
                         $data['error'] = '该用户不存在或密码错误！';
                     	$this->load->view('login', $data);
                     }
@@ -62,7 +61,8 @@ class Login extends CI_Controller {
      */
     public function login_out()
     {
-        $this->session->sess_destroy();//注销所有session变量
+    	//注销所有session变量
+    	$this->session->sess_destroy();
         redirect('index');
     }
 

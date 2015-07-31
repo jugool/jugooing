@@ -51,10 +51,14 @@ if (! defined('BASEPATH')) {
                 ?>
             </div>
             <?php echo form_error('password');?>
-        </div>
+        	</div>
+        	<div style="color:#fff;">
+					<?php if (isset($error)){echo $error;}?>
+			</div>
         <div class="form-group">
             <?php echo form_submit('submit','登陆','class="btn btn-primary btn-block btn-login"');?>
         </div>
+        
         <div class="form-group">
             <em style="color:#fff;">jugool工作室版权所有&reg;</em>
         </div>
