@@ -1,10 +1,44 @@
 <?php $this->load->view('header');?>
 
+<script type="text/javascript">
+$(function(){
+    $(".content .m_3 a").click(function(){
+        if(confirm("你确定要取消订单吗？")){
+            var mydate = new Date();
+            var date1 = mydate.toLocaleDateString(); //当前日期
+            var date2 = $(".content .m_3").attr("name"); //获取当前时间段
+            $.ajax({
+                type: "POST",
+                url: "cancel_order",
+                data: {date1:date1,date2:date2},
+                dataType: "json",
+                success: function(data){
+                    if(data == true){
+                        window.alert('你已经成功取消当前订餐');
+                        location.reload();
+                    }else if(data == false){
+                        window.alert('取消失败');
+                        location.reload();
+                    }
+                }
+            });
+        }else{
+            return false;
+        }
+    })
+})
+</script>
 <div class="content">
-    <h2 class="m_3">午餐
+    <h2 class="m_3" name="<?php if(!empty($this_date)) echo $this_date;?>">午餐
         <small>
-            （当前已点：<?php if(!empty($this_people)) echo $this_people; else echo "当前暂未点餐";?>）
-            <a href="javascript:;">取消</a>
+            （当前已点：
+            <?php
+                if(!empty($this_people)){
+                    echo $this_people;
+                    echo ')<a href="javascript:;">取消</a>';
+                } else
+                    echo "当前暂未点餐)";
+            ?>
         </small>
     </h2><!-- movie-test-light movie-test-right -->
         <div class="movie_top">
@@ -33,20 +67,34 @@
                 <script type="text/javascript">
                     $(function () {
                         var num = 0;
+                        /* 实时获取到员工点击菜品次数，并添加到下面的已点菜品列中 */
                         $(".movie .movie__images").click(function (e) {
                             var num = $(this).next().find('input').val(); //获取选取菜品数量
-                            var name = $(this).next().find('a').html();
-                            var id = $(this).attr('id');
+                            var name = $(this).next().find('a').html(); //获取当前点击菜品名称
+                            var id = $(this).attr('id'); //获取菜品ID
                             id = id.split('_'); //获取当前菜品ID
                             var number = parseInt(num) + 1;
                             $(this).next().find('input').val(number);
                             var index_dish = $('#made_dish').html();
-                            if (index_dish.indexOf(name) > 0) {
+                            if (index_dish.indexOf(name) > 0) {//实时对点击的菜品增加数量
                                 $('#already_' + id[1]).html(name + "*" + number);
                             } else {
                                 $('#made_dish').append("<b id=already_" + id[1] + ">" + name + "*1" + "</b>,");
                             }
                         });
+                        /* 员工在当前菜品输入框中输入菜品数量，实时修改已点菜单列表数据 */
+                        $(".dish_num input").keyup(function(e){
+                            var this_num = $(this).val(); //获取输入框菜品数量
+                            var id = $(this).parent().parent().prev().attr('id');
+                            var name = $(this).parent().parent().find('a').html();
+                            id = id.split('_'); //获取当前菜品ID
+                            var index_dish = $('#made_dish').html();
+                            if (index_dish.indexOf(name) > 0) {//实时对点击的菜品增加数量
+                                $('#already_' + id[1]).html(name + "*" + this_num);
+                            } else {
+                                $('#made_dish').append("<b id=already_" + id[1] + ">" + name + "*" + this_num + "</b>,");
+                            }
+                        })
                     });
                 </script>
                 <!-- Dish list end -->
@@ -63,12 +111,7 @@
                                 var order = $("#made_dish").html();
                                 var mydate = new Date();
                                 var date1 = mydate.toLocaleDateString(); //当前日期
-                                var H = mydate.getHours();
-                                if(H<11){
-                                    var date2 = "am";
-                                }else{
-                                    var date2 = "pm";
-                                }
+                                var date2 = $(".content .m_3").attr("name"); //获取当前时间段
                                 if(order.length>0){
                                     $.ajax({
                                         type: "POST",

@@ -76,19 +76,7 @@ class index extends CI_Controller
             }
             $data['this_people'] = implode(' , ',$info);
         }
-        
-        // 选出公告
-       	$this->db->where('id', 1);
-        $data['notice'] = $this->db->get('notice')->result();
-        if (count($data['notice']) == 1)
-        {
-        	$data['notice'] = $data['notice'][0]->content;
-        }
-        else
-        {
-        	$data['notice'] = '';
-        }
- 
+        $data['this_date'] = $date; //传递当前时间段
         $this->load->view('main',$data);
     }
 
@@ -142,6 +130,35 @@ class index extends CI_Controller
                 echo true;
                 exit();
             }
+        }
+    }
+
+    /**
+     * 订单取消
+     */
+    public function cancel_order()
+    {
+        $user_id = $this->session->userdata['user_info']['id']; //用户ID
+        $date = $this->input->post('date1'); //当前日期
+        $time = $this->input->post('date2'); //当前时间段
+        if (!empty($date) && !empty($time))
+        {
+            $this->db->where('u_id', $user_id);
+            $this->db->where('dish_day', $date);
+            $this->db->where('dish_time', $time);
+            $result = $this->db->delete('order');
+            if ($result) //是否取消成功
+            {
+                echo true;
+            }
+            else
+            {
+                echo false;
+            }
+        }
+        else
+        {
+            echo false;
         }
     }
 
