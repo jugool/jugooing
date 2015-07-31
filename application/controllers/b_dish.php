@@ -14,7 +14,7 @@ class b_dish extends CI_Controller
         parent::__construct();
         $this->load->database();
         $this->table_name = 'dishes';
-        $this->page_size = 3;
+        $this->page_size = 10;
         $this->load->helper('url');
     }
 
@@ -45,6 +45,8 @@ class b_dish extends CI_Controller
         }
         $this->db->select('dishes.*,library.name');
         $this->db->join('library', 'library.id = dishes.l_id', 'left');
+        $this->db->order_by('dish_time','asc');
+        $this->db->order_by('create_time','desc');
         $this->db->limit($end, $start);
         $temp = $this->db->get($this->table_name)->result();
         $data['list'] = $this->objectToArray($temp);

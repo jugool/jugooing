@@ -35,7 +35,7 @@ $(function(){
             <?php
                 if(!empty($this_people)){
                     echo $this_people;
-                    echo ')<a href="javascript:;">取消</a>';
+                    echo ')<a href="javascript:;">&nbsp;&nbsp;取消</a>';
                 } else
                     echo "当前暂未点餐)";
             ?>
@@ -147,49 +147,24 @@ $(function(){
             </div>
             <div class="col-md-3">
                 <div class="movie_img">
-                    <div class="grid_2">
-                        <img src="<?php echo base_url();?>public/images/frontend/pic6.jpg" class="img-responsive" alt="">
-
-                        <div class="caption1">
-                            <ul class="list_5 list_7">
-                                <li><i class="icon5"> </i>
-
-                                    <p>3,548</p></li>
-                            </ul>
-                            <i class="icon4 icon6 icon7"> </i>
-
-                            <p class="m_3">Guardians of the Galaxy</p>
-                        </div>
+                    <div class="alert alert-info" role="alert">
+                        <h4>今日公告</h4>
+                        <p><?php echo $notice['content'];?></p>
+                        <p class="text-right"><?php echo $notice['create_time'];?></p>
                     </div>
                 </div>
+                <?php foreach($order as $item){ ?>
                 <div class="grid_2 col_1">
-                    <img src="<?php echo base_url();?>public/images/frontend/pic2.jpg" class="img-responsive" alt="">
-
+                    <img src="<?php echo $item['images'];?>" class="img-responsive" alt="">
                     <div class="caption1">
                         <ul class="list_3 list_7">
                             <li><i class="icon5"> </i>
-
-                                <p>3,548</p></li>
+                                <p><?php echo $item['count'];?></p>
+                            </li>
                         </ul>
-                        <i class="icon4 icon7"> </i>
-
-                        <p class="m_3">Guardians of the Galaxy</p>
                     </div>
                 </div>
-                <div class="grid_2 col_1">
-                    <img src="<?php echo base_url();?>public/images/frontend/pic9.jpg" class="img-responsive" alt="">
-
-                    <div class="caption1">
-                        <ul class="list_3 list_7">
-                            <li><i class="icon5"> </i>
-
-                                <p>3,548</p></li>
-                        </ul>
-                        <i class="icon4 icon7"> </i>
-
-                        <p class="m_3">Guardians of the Galaxy</p>
-                    </div>
-                </div>
+                <?php }?>
             </div>
             <div class="clearfix"></div>
         </div>

@@ -70,3 +70,6 @@ CREATE TABLE `notice` (
 
 // 添加公告
 insert into notice(content) value('暂无公告!');
+
+ALTER TABLE `notice`
+ADD COLUMN `create_time`  datetime NULL COMMENT '创建时间' AFTER `content`;

@@ -62,7 +62,7 @@ class index extends CI_Controller
             }
         }
         //首页当前点餐信息
-        $this->db->select("order.num,library.name");
+        $this->db->select('order.num,library.name');
         $this->db->where('u_id',$this->session->userdata['user_info']['id']);
         $this->db->where('dish_day',date('Y-m-d'));
         $this->db->where('dish_time',$date);
@@ -76,7 +76,22 @@ class index extends CI_Controller
             }
             $data['this_people'] = implode(' , ',$info);
         }
+        //首页右边公告栏信息
+        $this->db->select('*');
+        $this->db->order_by('create_time','desc');
+        $this->db->limit(1);
+        $notice = $this->objectToArray($this->db->get('notice')->result());
+        $data['notice'] = $notice[0];
         $data['this_date'] = $date; //传递当前时间段
+        //首页排名前3的点餐菜品，和点餐人数
+        $this->db->select('order.u_id,library.images,count(order.id) as count');
+        $this->db->where('order.dish_time',$date);
+        $this->db->like('order.order_time',date('Y-m-d'),'after');
+        $this->db->group_by('order.l_id');
+        $this->db->order_by('count desc');
+        $this->db->join('library', 'library.id = order.l_id', 'left');
+        $order = $this->objectToArray($this->db->get('order')->result());
+        $data['order'] = $order;
         $this->load->view('main',$data);
     }
 
@@ -110,9 +125,9 @@ class index extends CI_Controller
                 //preg_match_all("/[\x{4e00}-\x{9fa5}]+[_0-9]+/u",$item,$m2);
                 preg_match("/[*][0-9]+/",$item,$m2);
                 $num = trim($m2[0],'*'); //菜品数量
-                if(empty($library_id)&&empty($num)) //必须要有菜品id和数量
+                if(empty($library_id)||empty($num)) //必须要有菜品id和数量
                 {
-                    echo false;
+                    echo 0;
                     exit();
                 }
                 $data = array(

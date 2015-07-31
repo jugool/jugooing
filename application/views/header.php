@@ -30,7 +30,7 @@
             <div class="col-sm-6 nav">
                 <ul>
                     <li><span class="simptip-position-bottom simptip-movable" data-tooltip="首页"><a href="<?php echo site_url('index');?>"> </a></span></li>
-                    <li><span class="simptip-position-bottom simptip-movable" data-tooltip="明天"><a href="javascript:;"> </a></span></li>
+<!--                    <li><span class="simptip-position-bottom simptip-movable" data-tooltip="明天"><a href="javascript:;"> </a></span></li>-->
                 </ul>
                 </ul>
             </div>
@@ -53,3 +53,14 @@
             </div>
             <div class="clearfix"> </div>
         </div>
+        <script type="text/javascript">
+            $(function(){
+                $('.header_right_box .last a').click(function(){
+                    if(confirm("你确定要退出吗？")){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                })
+            })
+        </script>

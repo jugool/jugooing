@@ -693,7 +693,7 @@ ul.list_5{
 	list-style:none;
 }
 ul.list_7{
-	top:-208px;
+	top:-170px;
 }
 i.icon6 {
 	top: -160px;
@@ -916,6 +916,9 @@ p.movie__option{
 }
 .movie_img{
 	margin-bottom:2em;
+}
+.movie_img h4{
+    text-align:center;
 }
 #flexiselDemo1, #flexiselDemo3 {
 	display: none;
