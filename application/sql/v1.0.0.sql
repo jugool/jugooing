@@ -56,8 +56,17 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='订单表';
 
 ALTER TABLE `library`
-MODIFY COLUMN `is_show`  tinyint(1) NULL DEFAULT 1 COMMENT '是否展示' AFTER `modify_time`;
+MODIFY COLUMN `is_show`  tinyint(1)  NOT NULL DEFAULT 1 COMMENT '是否展示' AFTER `modify_time`;
 
 ALTER TABLE `order`
 ADD COLUMN `num`  tinyint(4) NULL DEFAULT 0 COMMENT '订餐数量' AFTER `u_id`;
 
+DROP TABLE IF EXISTS `notice`;
+CREATE TABLE `notice` (
+  `id` tinyint(1) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `content` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='公告表';
+
+// 添加公告
+insert into notice(content) value('暂无公告!');

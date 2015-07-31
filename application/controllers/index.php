@@ -76,6 +76,19 @@ class index extends CI_Controller
             }
             $data['this_people'] = implode(' , ',$info);
         }
+        
+        // 选出公告
+       	$this->db->where('id', 1);
+        $data['notice'] = $this->db->get('notice')->result();
+        if (count($data['notice']) == 1)
+        {
+        	$data['notice'] = $data['notice'][0]->content;
+        }
+        else
+        {
+        	$data['notice'] = '';
+        }
+ 
         $this->load->view('main',$data);
     }
 
