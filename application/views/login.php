@@ -5,7 +5,7 @@
         <div class="col-md-6 login-right login">
             <h2>登&nbsp;录</h2>
 
-            <p>请用您的工号进行登录，如果忘记了，可以联系管理员找回。</p>
+            <p>使用您的工号登录，如有问题，请联系管理员。</p>
 
             <?php echo form_open('login/index');?>
                 <div>
@@ -21,12 +21,15 @@
                     echo form_password('password', set_value('password'), 'id="password" class="form-control" placeholder="Password" autocomplete="off"');
                     ?>
                 </div>
+                
             <?php echo form_error('password');?>
+            	<div style="color:red;">
+					<?php if (isset($error)){echo $error;}?>
+				</div>
                 <!--<a class="forgot" href="#">Forgot Your Password?</a>-->
             <?php echo form_submit('submit','登陆','class="btn btn-primary btn-login"');?>
             </from>
         </div>
         <div class="clearfix"></div>
     </div>
-
 <?php $this->load->view('footer');?>
