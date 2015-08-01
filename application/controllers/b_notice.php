@@ -39,6 +39,7 @@ class b_notice extends CI_Controller
 		$notice = $_POST['notice'];
 		$this->db->where('id', 1);
 		$data['content'] = $notice;
+		$data['modify_time'] = date('Y-m-d H:i:s');
 		$re = $this->db->update('notice', $data);
 		if ($re == TRUE)
 		{

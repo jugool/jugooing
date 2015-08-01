@@ -1,4 +1,4 @@
-﻿CREATE DATABASE jugool;
+CREATE DATABASE jugool;
 USE jugool;
 
 CREATE TABLE `user` (
@@ -56,11 +56,9 @@ CREATE TABLE `order` (
 CREATE TABLE `notice` (
   `id` tinyint(1) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `content` text,
+  `modify_time`  datetime NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='公告表';
 
-// 添加公告
+insert into user(id,name,job_number,password,type) values(1,'admin',0,'c3284d0f94606de1fd2af172aba15bf3',0);
 insert into notice(content) value('暂无公告!');
-
-ALTER TABLE `notice`
-ADD COLUMN `create_time`  datetime NULL COMMENT '创建时间' AFTER `content`;
