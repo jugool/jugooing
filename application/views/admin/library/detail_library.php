@@ -48,7 +48,7 @@
                     <div class="form-group" style="height:110px;">
                         <label class="col-xs-2 control-label">介绍</label>
                         <div class="col-xs-3">
-                            <textarea class="form-control" rows="3" name="descript" value="<?php echo $library->descript;?>" readOnly="true"></textarea>
+                            <textarea class="form-control" rows="3" name="descript" readOnly="true"><?php echo $library->descript;?></textarea>
                         </div>
                     </div>
           </div>

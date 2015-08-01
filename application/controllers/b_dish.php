@@ -23,7 +23,7 @@ class b_dish extends CI_Controller
      */
     public function dlist()
     {
-        $this->db->select('*');
+    	$this->db->select('*');
         $count = $this->db->get($this->table_name)->num_rows;
         $total_page = ceil($count/$this->page_size);
         $page = isset($_GET['page']) ? $_GET['page'] : 0;
@@ -39,6 +39,22 @@ class b_dish extends CI_Controller
         }
         $start = ($page - 1) * ($this->page_size);
         $end = $this->page_size;
+        if (isset($_POST['stype']))
+        {
+        	if ($_POST['stype'] == 'tod')
+        	{
+        		$this->db->where('dish_day', date('Y-m-d'));
+        	}
+        	else if ($_POST['stype'] == 'tom')
+        	{
+        		$timestap = time() + 86399;
+        		$this->db->where('dish_day', date('Y-m-d', $timestap));
+        	}
+        }
+        else 
+        {
+        	$this->db->where('dish_day', date('Y-m-d'));
+        }
         if (!empty($like))
         {
             $this->db->like('name', "$like");
@@ -54,9 +70,6 @@ class b_dish extends CI_Controller
         {
             $data['total_page'] = $total_page;
             $data['page'] = $page;
-//            echo "<pre>";
-//            print_r($data);
-//            echo "</pre>";
             $this->load->view('admin/dish/dish_list',$data);
         }
         else
@@ -70,15 +83,17 @@ class b_dish extends CI_Controller
     /**
      * 添加菜单
      */
-    public function dadd(){
-
-        if($this->input->post())
+    public function dadd()
+    {
+		if($this->input->post())
         {
-            if (empty($this->input->post('dish'))&&!is_array($this->input->post('dish')))
+            $dishs = $this->input->post('dish');
+        	if (empty($dishs)&&!is_array($dishs))
             {
                 $this->show_error('请选择你要上架的菜品!');exit();
             }
-            if (empty($this->input->post('shelves_time')))
+            $shelves_time = $this->input->post('shelves_time');
+            if (empty($shelves_time))
             {
                 $this->show_error('请选择你要上架的菜品的时间!');exit();
             }
@@ -106,12 +121,14 @@ class b_dish extends CI_Controller
                     exit();
                 }
                 $data['l_id'] = trim($id); //菜品ID
-                if(empty($this->input->post('num_'.$id)))
+                $num_id = $this->input->post('num_'.$id);
+                if(empty($num_id))
                 {
                     $this->show_error('选择的菜品未填上架数量!');
                     exit();
                 }
                 $data['dish_num'] = trim($this->input->post('num_'.$id),'.'); //菜品数量
+                $data['create_time'] = date('Y-m-d H:i:s');
                 $result = $this->db->insert($this->table_name, $data);
                 if(!$result)
                 {

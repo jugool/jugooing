@@ -10,9 +10,14 @@
     <form class="navbar-form navbar-left" role="add">
         <a href="dadd" type="button" class="btn btn-info btn_add">菜单添加</a>
     </form>
-    <form class="navbar-form navbar-right" role="search">
+    <form class="navbar-form navbar-right" role="search" action="dlist" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+        	<select class="form-control" name="stype">
+             	<option value="tod">今日</option>
+                <option value="tom">明日</option>
+                <option value="all">所有</option>
+             </select>
+            <input type="text" class="form-control" placeholder="Search" name="like"> 
         </div>
         <button type="submit" class="btn btn-default">查询</button>
     </form>
@@ -23,8 +28,7 @@
         <th>ID</th>
         <th>菜名</th>
         <th>数量</th>
-        <th>订餐时间段</th>
-        <th>上架时间</th>
+        <th>订餐时间</th>
         <th>创建时间</th>
         <th>操作</th>
     </tr>
@@ -34,6 +38,7 @@
         <td><?php echo $item['name'];?></td>
         <td><?php echo $item['dish_num'];?></td>
         <td><?php
+        	echo $item['dish_day'].'/';
             if($item['dish_time'] === 'am'){
                 echo "中午";
             }else{
@@ -41,8 +46,7 @@
             }
             ?>
         </td>
-        <td><?php echo $item['dish_day'];?></td>
-        <td><?php echo date('Y-m-d',$item['create_time']);?></td>
+        <td><?php echo $item['create_time'];?></td>
         <td>
             <a href="ddelete?id=<?php echo $item['id'];?>" onclick= "if(confirm( '确定删除？ ')==false)return false; ">删除</a>
         </td>

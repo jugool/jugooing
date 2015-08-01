@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <label class="col-xs-2 control-label">介绍</label>
                         <div class="col-xs-3">
-                            <textarea class="form-control" rows="3" name="descript" value="<?php echo $library->descript;?>"></textarea>
+                            <textarea class="form-control" rows="3" name="descript" value=""><?php echo $library->descript;?></textarea>
                         </div>
                     </div>
 

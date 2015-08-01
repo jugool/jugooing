@@ -51,8 +51,8 @@
                                         <?php for($j=0;$j<4;$j++){?>
                                             <?php if(!empty($dish_list[($i*4)+$j]->id)){?>
                                                 <td>
-                                                    <input type="checkbox" value="<?=$dish_list[($i*4)+$j]->id?>" name="dish[]">&nbsp;<?=$dish_list[($i*4)+$j]->name?><br>
-                                                    <input type="text" name="num_<?=$dish_list[($i*4)+$j]->id?>" placeholder="数量" style="width:60%;" onkeyup="checkNum(this)"/>
+                                                    <input type="checkbox" value="<?php echo $dish_list[($i*4)+$j]->id?>" name="dish[]">&nbsp;<?php echo $dish_list[($i*4)+$j]->name?><br>
+                                                    <input type="text" name="num_<?php echo $dish_list[($i*4)+$j]->id?>" placeholder="数量" style="width:60%;" onkeyup="checkNum(this)"/>
                                                 </td>
                                             <?php }?>
                                         <?php }?>
