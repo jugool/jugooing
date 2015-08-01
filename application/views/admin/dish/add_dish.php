@@ -6,9 +6,9 @@
 </head>
 <body>
 <ol class="breadcrumb">
-    <li><a href="#">菜品管理</a></li>
-    <li><a href="#">菜品库</a></li>
-    <li class="active">菜单添加</li>
+    <li><a>菜品管理</a></li>
+    <li><a>上架菜品</a></li>
+    <li class="active">菜品添加</li>
 </ol>
 
 <div class="container">
@@ -16,9 +16,6 @@
         <!-- form: -->
         <section>
             <div class="col-lg-8 col-lg-offset-2">
-                <div class="page-header">
-                    <h3>菜单添加</h3>
-                </div>
                 <form id="defaultForm" method="post" class="form-horizontal" action="dadd">
 
                     <div class="form-group">

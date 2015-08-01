@@ -3,12 +3,12 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/admin.css" type="text/css" media="screen">
 <ol class="breadcrumb">
     <li><a href="#">菜品管理</a></li>
-    <li class="active">菜品列表</li>
+    <li class="active">上架菜品</li>
 </ol>
 
 <div class="table_list">
     <form class="navbar-form navbar-left" role="add">
-        <a href="dadd" type="button" class="btn btn-info btn_add">菜单添加</a>
+        <a href="dadd" type="button" class="btn btn-info btn_add">菜品添加</a>
     </form>
     <form class="navbar-form navbar-right" role="search" action="dlist" method="post">
         <div class="form-group">
