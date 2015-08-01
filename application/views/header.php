@@ -26,11 +26,11 @@
 <div class="container">
     <div class="container_wrap">
         <div class="header_top">
-            <div class="col-sm-3 logo"><a href="index.html"><img src="<?php echo base_url();?>public/images/frontend/logo.png" alt=""/></a></div>
+            <div class="col-sm-3 logo"><a><img src="<?php echo base_url();?>public/images/frontend/logo.png" alt=""/></a></div>
             <div class="col-sm-6 nav">
                 <ul>
-                    <li><span class="simptip-position-bottom simptip-movable" data-tooltip="首页"><a href="<?php echo site_url('index');?>"> </a></span></li>
-<!--                    <li><span class="simptip-position-bottom simptip-movable" data-tooltip="明天"><a href="javascript:;"> </a></span></li>-->
+      <!--              <li><span class="simptip-position-bottom simptip-movable" data-tooltip="首页"><a href="<?php echo site_url('index');?>"> </a></span></li>
+                    <li><span class="simptip-position-bottom simptip-movable" data-tooltip="明天"><a href="javascript:;"> </a></span></li>-->
                 </ul>
                 </ul>
             </div>
@@ -39,7 +39,7 @@
                     
                     <!--  <li><img src="<?php echo base_url();?>public/images/frontend/p1.png" alt=""/></li>-->
                     <li>
-                        <p><a href="login/index"><?php if(!empty($this->session->userdata['user_info']))echo $this->session->userdata['user_info']['user_name']; else echo "未登录";?></a></p>
+                        <p><a><?php if(!empty($this->session->userdata['user_info']))echo $this->session->userdata['user_info']['user_name']; else echo "未登录";?></a></p>
 <!--                        <p>--><?php //if(!empty($user_name))echo $user_name; else echo "填写登录";?><!--</p>-->
                     </li>
                     <li class="last">

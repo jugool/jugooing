@@ -14,6 +14,7 @@ class B_library extends CI_Controller
 		parent::__construct();
 		$this->load->database();
 		$this->page_size = 10;
+		$this->load->helper('url');
 	}
 	/**
 	 * 菜品列表函数
@@ -51,21 +52,6 @@ class B_library extends CI_Controller
     	}
     	$query = $this->db->get('library');
     	$data['library_list'] = $query->result();
-    	
-    	/* if (count($data['user_list']) > 0)
-    	{
-    		foreach ($data['user_list'] as $key => $val)
-    		{
-    			if ($val->type == 0)
-    			{
-    				$data['user_list'][$key]->type = "<b style='color:red;'>管理员</b>";
-    			}
-    			else
-    			{
-    				$data['user_list'][$key]->type = "员工";
-    			}
-    		}
-    	} */
     	
     	if (count($data['library_list']) > 0)
     	{

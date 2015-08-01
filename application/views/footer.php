@@ -14,27 +14,10 @@
                         <img src="images/f_logo.png" alt=""/>
                     </div>
                     <br>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page.</p>
-                    <p class="text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
+                    <p>欢迎你使用点餐系统！</p>
+                    <p class="text">走过路过不要错过,这儿有美味的菜品，有可口的饮料...</p>
                 </div>
                 <div class="footer_box">
-                   <!--<div class="col_1_of_3 span_1_of_3">
-                        <h3>Categories</h3>
-                        <ul class="first">
-                            <li><a href="#">Dance</a></li>
-                            <li><a href="#">History</a></li>
-                            <li><a href="#">Specials</a></li>
-                        </ul>
-                    </div>
-                    <div class="col_1_of_3 span_1_of_3">
-                        <h3>Information</h3>
-                        <ul class="first">
-                            <li><a href="#">New products</a></li>
-                            <li><a href="#">top sellers</a></li>
-                            <li><a href="#">Specials</a></li>
-                        </ul>
-                    </div>
-                      --> 
                     <div class="col_1_of_3 span_1_of_3">
                         
                         <div class="copy" style="width:100%;margin-left:50%;">

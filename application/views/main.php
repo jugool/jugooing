@@ -29,7 +29,7 @@ $(function(){
 })
 </script>
 <div class="content">
-    <h2 class="m_3" name="<?php if(!empty($this_date)) echo $this_date;?>">午餐
+    <h2 class="m_3" name="<?php if(!empty($this_date)) echo $this_date;?>"><?php $d = date('H');if ($d < 12){ echo '午餐';}else{echo '晚餐';}?>
         <small>
             （当前已点：
             <?php
@@ -48,7 +48,7 @@ $(function(){
                 <?php foreach($dish_list as $key=>$item){?>
                 <div class="movie movie-test <?php if($item['arrange'] === true) echo "movie-test-dark movie-test-left";else echo "movie-test-light movie-test-right";?>">
                     <div class="movie__images" id="library_<?=$item['l_id']?>">
-                        <a href="javascript:;" class="movie-beta__link" >
+                        <a  class="movie-beta__link" >
                             <img alt="当前无图片" src="<?php echo $item['images'];?>" class="img-responsive" />
                         </a>
                     </div>
@@ -150,7 +150,7 @@ $(function(){
                     <div class="alert alert-info" role="alert">
                         <h4>今日公告</h4>
                         <p><?php echo $notice['content'];?></p>
-                        <p class="text-right"><?php echo $notice['create_time'];?></p>
+                        <!-- <p class="text-right"><?php echo $notice['create_time'];?></p> -->
                     </div>
                 </div>
                 <?php foreach($order as $item){ ?>

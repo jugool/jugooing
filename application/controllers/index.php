@@ -39,8 +39,8 @@ class index extends CI_Controller
     public function main()
     {
         //当前时间段
-        $H = date('G');
-        if ($H < 11) {
+        $H = date('H');
+        if ($H < 12) {
             $date = 'am'; //中午
         } else {
             $date = 'pm'; //晚上
@@ -48,8 +48,8 @@ class index extends CI_Controller
         //首页菜单列表
         $this->db->select('dishes.id,dishes.l_id,library.name,library.images,library.price,library.descript');
         $this->db->where('library.is_show', 1); //必须是已经开启展示的菜品
-        $this->db->where('dishes.dish_time', 'am'); //中午
-        //$this->db->where('dishes.dish_day',date('Y-m-d')); //当天
+        $this->db->where('dishes.dish_time', $date); 
+        $this->db->where('dishes.dish_day',date('Y-m-d')); 
         $this->db->join('library', 'library.id = dishes.l_id', 'left');
         $data['dish_list'] = $this->objectToArray($this->db->get($this->table_name)->result());
         foreach($data['dish_list'] as $key=>$val)
@@ -60,6 +60,17 @@ class index extends CI_Controller
             }else{
                 $data['dish_list'][$key]['arrange'] = false;
             }
+        }
+        
+        if (count($data['dish_list']) > 0)
+        {
+        	foreach ($data['dish_list'] as $k => $v)
+        	{
+        		$imgs = explode('jugooing' , $v['images']);
+        		$imgs[1] = substr($imgs[1], 1);
+        		$base_url = $this->config->base_url();
+        		$data['dish_list'][$k]['images'] = str_replace("\\","/",$base_url.$imgs[1]);
+        	}
         }
         //首页当前点餐信息
         $this->db->select('order.num,library.name');
@@ -76,13 +87,14 @@ class index extends CI_Controller
             }
             $data['this_people'] = implode(' , ',$info);
         }
+        
         //首页右边公告栏信息
         $this->db->select('*');
-        $this->db->order_by('create_time','desc');
-        $this->db->limit(1);
+        $this->db->order_by('modify_time','desc');
         $notice = $this->objectToArray($this->db->get('notice')->result());
         $data['notice'] = $notice[0];
-        $data['this_date'] = $date; //传递当前时间段
+        $data['this_date'] = $date; 
+        
         //首页排名前3的点餐菜品，和点餐人数
         $this->db->select('order.u_id,library.images,count(order.id) as count');
         $this->db->where('order.dish_time',$date);
