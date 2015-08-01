@@ -87,7 +87,10 @@ class B_stat extends CI_Controller {
 			
 			$data['price'] = $data['price'] /$data['total'];
 		}
-	
+		if ($data['lprice'] == 100000)
+		{
+			$data['lprice'] = 0;
+		}
 		$this->load->view('admin/stat/library_stat', $data);
 	}
 	
