@@ -13,6 +13,7 @@ class Admin extends CI_Controller {
             'url'
         ));
         $this->load->library('session');
+        $this->load->database();
     }
 
 	/**
@@ -95,5 +96,33 @@ class Admin extends CI_Controller {
     {
         $this->session->sess_destroy();//注销所有session变量
         $this->load->view('admin/login');
+    }
+    
+    /**
+     * 后台修改密码
+     */
+    public function update()
+    {
+    	if (empty($_POST))
+    	{
+    		$this->load->view('admin/update');
+    	}
+    	else 
+    	{
+    		$data['password']= md5(md5($_POST['password']));
+    		$re = $this->session->userdata('admin_info');
+    		$this->db->where('id', $re['id']);
+    		if ($this->db->update('user', $data))
+    		{
+    			$this->session->sess_destroy();
+    			echo "<script>alert('修改成功!');window.open('../../index.php/admin','_parent');</script>";
+    		}
+    		else 
+    		{
+    			echo "<script>alert('修改失败!');history.back(-1);</script>";
+    		}
+    	}
+    	
+    	
     }
 }

@@ -52,7 +52,7 @@ if (! defined('BASEPATH')) {
             </div>
             <?php echo form_error('password');?>
         	</div>
-        	<div style="color:#fff;">
+        	<div style="color:#fff;" id='error'>
 					<?php if (isset($error)){echo $error;}?>
 			</div>
         <div class="form-group">

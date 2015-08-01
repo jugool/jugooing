@@ -6,7 +6,7 @@
 <script type="text/javascript" src="<?php echo base_url();?>public/js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>public/js/bootstrapValidator.js"></script>
 <ol class="breadcrumb">
-    <li><a href="#">用户管理</a></li>
+    <li><a>用户管理</a></li>
     <li class="active">添加用户</li>
 </ol>
 
