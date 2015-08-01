@@ -49,8 +49,9 @@ $(function(){
                 <div class="movie movie-test <?php if($item['arrange'] === true) echo "movie-test-dark movie-test-left";else echo "movie-test-light movie-test-right";?>">
                     <div class="movie__images" id="library_<?=$item['l_id']?>">
                         <a  class="movie-beta__link" >
-                            <img alt="当前无图片" src="<?php echo $item['images'];?>" class="img-responsive" />
+                            <img alt="当前无图片" src="<?php echo $item['images'];?>" class="img-responsive" style='width:200px;height:150px;'/>
                         </a>
+                        <b style='color:red;position:relative;top:-80px;left:45px;font-size:16px;z-index:1000;display:none;'>点击添加</b>
                     </div>
                     <div class="movie__info">
                         <a href="javascript:;" class="movie__title"><?php echo $item['name'];?></a>
@@ -81,6 +82,12 @@ $(function(){
                             } else {
                                 $('#made_dish').append("<b id=already_" + id[1] + ">" + name + "*1" + "</b>,");
                             }
+                        });
+                        $(".movie__images").hover(function (e) {
+                        	$(this).find('b').show();
+                        });
+                        $(".movie__images").mouseout(function (e) {
+                        	$(this).find('b').hide();
                         });
                         /* 员工在当前菜品输入框中输入菜品数量，实时修改已点菜单列表数据 */
                         $(".dish_num input").keyup(function(e){
