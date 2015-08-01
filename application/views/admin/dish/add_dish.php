@@ -31,8 +31,8 @@
                         <label class="col-xs-2 control-label">订餐时段</label>
                         <div class="col-xs-2">
                             <select class="form-control" name="dish_time">
-                                <option value="am">中午</option>
-                                <option value="pm">晚上</option>
+                                <option value="am">午餐</option>
+                                <option value="pm">晚餐</option>
                             </select>
                         </div>
                     </div>
